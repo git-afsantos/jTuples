@@ -1,2 +1,2 @@
 # jTuples
-Java get a Pair.
+Java gets a Pair.
