@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 /**
  * This class provides skeletal implementations of common methods for tuples.
@@ -63,14 +64,10 @@ public abstract class AbstractTuple implements Tuple {
 
     @Override
     public final String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append('(');
+        StringJoiner joiner = new StringJoiner(", ", "(", ")");
         for (Object e: this.asList()) {
-            builder.append(", ")
-                    .append(String.valueOf(e));
+            joiner.add(String.valueOf(e));
         }
-        builder.delete(1, 3);
-        builder.append(')');
-        return builder.toString();
+        return joiner.toString();
     }
 }
