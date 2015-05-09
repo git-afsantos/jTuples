@@ -86,7 +86,7 @@ public final class Pair<A, B> extends AbstractTuple {
 
     @Override
     public Pair<B, A> invert() {
-        return new Pair<B, A>(second, first);
+        return new Pair<>(second, first);
     }
 
 
@@ -108,7 +108,7 @@ public final class Pair<A, B> extends AbstractTuple {
      * @return a pair with the result of function as the first member
      */
     public <R> Pair<R, B> applyFirst(Function<A, R> function) {
-        return new Pair<R, B>(function.apply(first), second);
+        return new Pair<>(function.apply(first), second);
     }
 
     /**
@@ -121,7 +121,7 @@ public final class Pair<A, B> extends AbstractTuple {
      * @return a pair with the result of function as the second member
      */
     public <R> Pair<A, R> applySecond(Function<B, R> function) {
-        return new Pair<A, R>(first, function.apply(second));
+        return new Pair<>(first, function.apply(second));
     }
 
     /**
