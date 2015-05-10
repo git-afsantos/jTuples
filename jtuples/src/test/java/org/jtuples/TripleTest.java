@@ -39,7 +39,8 @@ public class TripleTest {
 
     @Test
     public void testFirst() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
         assertEquals(triple.first(), "hello");
     }
@@ -53,7 +54,8 @@ public class TripleTest {
 
     @Test
     public void testSecond() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
         assertEquals(triple.second(), "world");
     }
@@ -67,7 +69,8 @@ public class TripleTest {
 
     @Test
     public void testThird() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
         assertEquals(triple.third(), "!");
     }
@@ -81,72 +84,87 @@ public class TripleTest {
 
     @Test
     public void testInvert() {
-        Triple<String, Integer, Boolean> triple = new Triple<>("hello", 123, true);
+        Triple<String, Integer, Boolean> triple =
+                new Triple<>("hello", 123, true);
 
         Triple<Boolean, Integer, String> other = triple.invert();
 
         assertEquals(other.first(), true);
-        assertEquals(other.second(), 123);
+        assertEquals((int)other.second(), 123);
         assertEquals(other.third(), "hello");
     }
 
     @Test
     public void testApplyFirst() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
-        Triple<Integer, String, String> other = triple.applyFirst(s -> s.length());
+        Triple<Integer, String, String> other =
+                triple.applyFirst(s -> s.length());
 
-        assertEquals(other.first(), "hello".length());
+        assertEquals((int)other.first(), "hello".length());
     }
 
     @Test
     public void testApplySecond() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
-        Triple<String, Integer, String> other = triple.applySecond(s -> s.length());
+        Triple<String, Integer, String> other =
+                triple.applySecond(s -> s.length());
 
-        assertEquals(other.second(), "world".length());
+        assertEquals((int)other.second(), "world".length());
     }
 
     @Test
     public void testApplyThird() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
 
-        Triple<String, String, Integer> other = triple.applyThird(s -> s.length());
+        Triple<String, String, Integer> other =
+                triple.applyThird(s -> s.length());
 
-        assertEquals(other.third(), "!".length());
+        assertEquals((int)other.third(), "!".length());
     }
 
     @Test
     public void testEqualsIsTrueWhenEqual() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = new Triple<>("hello", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other =
+                new Triple<>("hello", "world", "!");
 
         assertTrue(triple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenNotEqual() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = new Triple<>("goodbye", "world", "!");
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other =
+                new Triple<>("goodbye", "world", "!");
 
         assertFalse(triple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
-        Triple<String, String, Integer> other = new Triple<>("hello", "world", 123);
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, Integer> other =
+                new Triple<>("hello", "world", 123);
 
         assertFalse(triple.equals(other));
     }
 
     @Test
-    public void testHashcodeIsTheSameForEqualTriples() {
-        Triple<String, String, String> triple = new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = new Triple<>("hello", "world", "!");
+    public void testHashCodeIsTheSameForEqualTriples() {
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other =
+                new Triple<>("hello", "world", "!");
 
-        asserEquals(triple.hashcode(), other.hashcode());
+        assertEquals(triple.hashCode(), other.hashCode());
     }
     
 }
