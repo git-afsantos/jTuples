@@ -33,7 +33,7 @@ import java.util.function.Function;
  * @param <A> the type of the first element of the quadruple
  * @param <B> the type of the second element of the quadruple
  * @param <C> the type of the third element of the quadruple
- * @param <D> the type of the forth element of the quadruple
+ * @param <D> the type of the fourth element of the quadruple
  */
 public class Quadruple<A, B, C, D> extends AbstractTuple {
     private static final int ARITY = 4;
@@ -41,7 +41,7 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
     private final A first;
     private final B second;
     private final C third;
-    private final D forth;
+    private final D fourth;
 
     /**
      * Returns a new quadruple of {@code (null, null, null, null)}.
@@ -55,13 +55,13 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
      * @param first the first member of the ordered quadruple
      * @param second the second member of the ordered quadruple
      * @param third the third member of the ordered quadruple
-     * @param forth the forth member of the ordered quadruple
+     * @param fourth the fourth member of the ordered quadruple
      */
-    public Quadruple(A first, B second, C third, D forth) {
+    public Quadruple(A first, B second, C third, D fourth) {
         this.first = first;
         this.second = second;
         this.third = third;
-        this.forth = forth;
+        this.fourth = fourth;
     }
 
 
@@ -90,11 +90,11 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
     }
 
     /**
-     * Returns the forth member of this ordered quadruple.
-     * @return the forth member of the quadruple
+     * Returns the fourth member of this ordered quadruple.
+     * @return the fourth member of the quadruple
      */
-    public D forth() {
-        return forth;
+    public D fourth() {
+        return fourth;
     }
     
     /**
@@ -109,14 +109,14 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
 
     @Override
     public Quadruple<D, C, B, A> invert() {
-        return new Quadruple<>(forth, third, second, first);
+        return new Quadruple<>(fourth, third, second, first);
     }
 
     
     @Override
     public Object[] toArray() {
         return new Object[]{
-            first, second, third, forth
+            first, second, third, fourth
         };
     }
 
@@ -125,13 +125,13 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
      * Returns a new quadruple, transforming the first member of this quadruple.
      * The first member of the new quadruple is the result of applying the given
      * function to the first member of this quadruple.
-     * The second, third and forth members are preserved.
+     * The second, third and fourth members are preserved.
      * @param <R> the type of the function's result
      * @param function the function used to transform the first member
      * @return a quadruple with the result of function as the first member
      */
     public <R> Quadruple<R, B, C, D> applyFirst(Function<A, R> function) {
-        return new Quadruple<>(function.apply(first), second, third, forth);
+        return new Quadruple<>(function.apply(first), second, third, fourth);
     }
 
     /**
@@ -139,39 +139,39 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
      * quadruple.
      * The second member of the new quadruple is the result of applying the
      * given function to the second member of this quadruple.
-     * The first, third and forth members are preserved.
+     * The first, third and fourth members are preserved.
      * @param <R> the type of the function's result
      * @param function the function used to transform the second member
      * @return a quadruple with the result of function as the second member
      */
     public <R> Quadruple<A, R, C, D> applySecond(Function<B, R> function) {
-        return new Quadruple<>(first, function.apply(second), third, forth);
+        return new Quadruple<>(first, function.apply(second), third, fourth);
     }
 
     /**
      * Returns a new quadruple, transforming the third member of this quadruple.
      * The third member of the new quadruple is the result of applying the given
      * function to the third member of this quadruple.
-     * The first, second and forth members are preserved.
+     * The first, second and fourth members are preserved.
      * @param <R> the type of the function's result
      * @param function the function used to transform the third member
      * @return a quadruple with the result of function as the third member
      */
     public <R> Quadruple<A, B, R, D> applyThird(Function<C, R> function) {
-        return new Quadruple<>(first, second, function.apply(third), forth);
+        return new Quadruple<>(first, second, function.apply(third), fourth);
     }
 
     /**
-     * Returns a new quadruple, transforming the forth member of this quadruple.
-     * The forth member of the new quadruple is the result of applying the given
-     * function to the forth member of this quadruple.
+     * Returns a new quadruple, transforming the fourth member of this quadruple.
+     * The fourth member of the new quadruple is the result of applying the given
+     * function to the fourth member of this quadruple.
      * The first, second and third members are preserved.
      * @param <R> the type of the function's result
-     * @param function the function used to transform the forth member
-     * @return a quadruple with the result of function as the forth member
+     * @param function the function used to transform the fourth member
+     * @return a quadruple with the result of function as the fourth member
      */
     public <R> Quadruple<A, B, C, R> applyForth(Function<D, R> function) {
-        return new Quadruple<>(first, second, third, function.apply(forth));
+        return new Quadruple<>(first, second, third, function.apply(fourth));
     }
     
 }

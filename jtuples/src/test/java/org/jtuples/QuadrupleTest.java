@@ -74,7 +74,7 @@ public class QuadrupleTest {
         Quadruple<String, String, String, String> quadruple =
                 new Quadruple<>("a", "b", "c", "d");
 
-        assertEquals(quadruple.forth(), "d");
+        assertEquals(quadruple.fourth(), "d");
     }
 
     @Test
@@ -82,7 +82,7 @@ public class QuadrupleTest {
         Quadruple<Object, Object, Object, Object> quadruple =
                 new Quadruple<>(null, null, null, null);
 
-        assertNull(quadruple.forth());
+        assertNull(quadruple.fourth());
     }
 
     @Test
@@ -95,7 +95,7 @@ public class QuadrupleTest {
         assertEquals((int)other.first(), 123);
         assertEquals(other.second(), "c");
         assertEquals(other.third(), "b");
-        assertEquals(other.forth(), "a");
+        assertEquals(other.fourth(), "a");
     }
 
     @Test
@@ -139,7 +139,7 @@ public class QuadrupleTest {
         Quadruple<String, String, String, String> other =
                 quadruple.applyForth(s -> s + s);
 
-        assertEquals(other.forth(), "dd");
+        assertEquals(other.fourth(), "dd");
     }
 
     @Test
