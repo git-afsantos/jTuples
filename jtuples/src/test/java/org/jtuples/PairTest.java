@@ -32,7 +32,7 @@ public class PairTest {
 
     @Test
     public void testArity() {
-        Pair<String, String> pair = new Pair<String, String>();
+        Pair<String, String> pair = new Pair<>();
         
         assertEquals(pair.arity(), 2);
     }
@@ -71,7 +71,7 @@ public class PairTest {
 
         Pair<Integer, String> other = pair.invert();
 
-        assertEquals(other.first(), 123);
+        assertEquals((int)other.first(), 123);
         assertEquals(other.second(), "hello");
     }
 
@@ -81,7 +81,7 @@ public class PairTest {
 
         Pair<Integer, String> other = pair.applyFirst(s -> s.length());
 
-        assertEquals(other.first(), "hello".length());
+        assertEquals((int)other.first(), "hello".length());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class PairTest {
 
         Pair<String, Integer> other = pair.applySecond(s -> s.length());
 
-        assertEquals(other.second(), "world".length());
+        assertEquals((int)other.second(), "world".length());
     }
 
     @Test
@@ -118,11 +118,11 @@ public class PairTest {
     }
 
     @Test
-    public void testHashcodeIsTheSameForEqualPairs() {
+    public void testHashCodeIsTheSameForEqualPairs() {
         Pair<String, String> pair = new Pair<>("hello", "world");
         Pair<String, String> other = new Pair<>("hello", "world");
 
-        asserEquals(pair.hashcode(), other.hashcode());
+        assertEquals(pair.hashCode(), other.hashCode());
     }
     
 }
