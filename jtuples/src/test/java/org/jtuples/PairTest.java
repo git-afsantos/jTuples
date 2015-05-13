@@ -124,5 +124,14 @@ public class PairTest {
 
         assertEquals(pair.hashCode(), other.hashCode());
     }
-    
+
+    @Test
+    public void testApply() {
+        Pair<String, String> pair = new Pair<>("hello", "world");
+
+        assertTrue(pair.apply((a, b) -> {
+            return "hello".equals(a) && "world".equals(b) ?
+                    Boolean.TRUE : Boolean.FALSE;
+        }));
+    }
 }
