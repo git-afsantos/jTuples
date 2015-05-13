@@ -100,6 +100,16 @@ public final class Triple<A, B, C> extends AbstractTuple {
         return new Triple<>(third, second, first);
     }
 
+    @Override
+    public Triple<B, C, A> shiftLeft() {
+        return new Triple<>(second, third, first);
+    }
+
+    @Override
+    public Triple<C, A, B> shiftRight() {
+        return new Triple<>(third, first, second);
+    }
+
 
     @Override
     public Object[] toArray() {
