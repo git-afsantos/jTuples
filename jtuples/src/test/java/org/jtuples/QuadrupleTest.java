@@ -181,5 +181,46 @@ public class QuadrupleTest {
 
         assertEquals(quadruple.hashCode(), other.hashCode());
     }
-    
+
+    @Test
+    public void testShiftLeftReturnsNew() {
+        Quadruple<String, String, String, String> quad =
+                new Quadruple<>("hello", ",", "world", "!");
+        Quadruple<String, String, String, String> other = quad.shiftLeft();
+
+        assertNotEquals(quad, other);
+    }
+
+    @Test
+    public void testShiftLeft() {
+        Quadruple<String, String, String, String> quad =
+                new Quadruple<>("hello", ",", "world", "!");
+        Quadruple<String, String, String, String> other = quad.shiftLeft();
+
+        assertEquals(quad.second(), other.first());
+        assertEquals(quad.third(), other.second());
+        assertEquals(quad.fourth(), other.third());
+        assertEquals(quad.first(), other.fourth());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        Quadruple<String, String, String, String> quad =
+                new Quadruple<>("hello", ",", "world", "!");
+        Quadruple<String, String, String, String> other = quad.shiftRight();
+
+        assertNotEquals(quad, other);
+    }
+
+    @Test
+    public void testShiftRight() {
+        Quadruple<String, String, String, String> quad =
+                new Quadruple<>("hello", ",", "world", "!");
+        Quadruple<String, String, String, String> other = quad.shiftRight();
+
+        assertEquals(quad.fourth(), other.first());
+        assertEquals(quad.first(), other.second());
+        assertEquals(quad.second(), other.third());
+        assertEquals(quad.third(), other.fourth());
+    }
 }

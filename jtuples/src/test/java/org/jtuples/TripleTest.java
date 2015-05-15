@@ -166,5 +166,44 @@ public class TripleTest {
 
         assertEquals(triple.hashCode(), other.hashCode());
     }
-    
+
+    @Test
+    public void testShiftLeftReturnsNew() {
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other = triple.shiftLeft();
+
+        assertNotEquals(triple, other);
+    }
+
+    @Test
+    public void testShiftLeft() {
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other = triple.shiftLeft();
+
+        assertEquals(triple.second(), other.first());
+        assertEquals(triple.third(), other.second());
+        assertEquals(triple.first(), other.third());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other = triple.shiftRight();
+
+        assertNotEquals(triple, other);
+    }
+
+    @Test
+    public void testShiftRight() {
+        Triple<String, String, String> triple =
+                new Triple<>("hello", "world", "!");
+        Triple<String, String, String> other = triple.shiftRight();
+
+        assertEquals(triple.third(), other.first());
+        assertEquals(triple.first(), other.second());
+        assertEquals(triple.second(), other.third());
+    }
 }

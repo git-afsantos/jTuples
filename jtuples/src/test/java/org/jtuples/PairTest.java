@@ -134,4 +134,38 @@ public class PairTest {
                     Boolean.TRUE : Boolean.FALSE;
         }));
     }
+
+    @Test
+    public void testShiftLeftReturnsNew() {
+        Pair<String, String> pair = new Pair<>("hello", "world");
+        Pair<String, String> other = pair.shiftLeft();
+
+        assertNotEquals(pair, other);
+    }
+
+    @Test
+    public void testShiftLeft() {
+        Pair<String, String> pair = new Pair<>("hello", "world");
+        Pair<String, String> other = pair.shiftLeft();
+
+        assertEquals(pair.second(), other.first());
+        assertEquals(pair.first(), other.second());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        Pair<String, String> pair = new Pair<>("hello", "world");
+        Pair<String, String> other = pair.shiftRight();
+
+        assertNotEquals(pair, other);
+    }
+
+    @Test
+    public void testShiftRight() {
+        Pair<String, String> pair = new Pair<>("hello", "world");
+        Pair<String, String> other = pair.shiftRight();
+
+        assertEquals(pair.second(), other.first());
+        assertEquals(pair.first(), other.second());
+    }
 }
