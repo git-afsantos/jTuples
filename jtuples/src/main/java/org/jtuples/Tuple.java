@@ -47,6 +47,20 @@ public interface Tuple {
     Tuple invert();
 
     /**
+     * Returns a new tuple, with the members shifted to the left
+     * by one position.
+     * @return a tuple shifted to the left
+     */
+    Tuple shiftLeft();
+
+    /**
+     * Returns a new tuple, with the members shifted to the right
+     * by one position.
+     * @return a tuple shifted to the right
+     */
+    Tuple shiftRight();
+
+    /**
      * Returns a {@code List} view of the elements in this tuple.
      * The returned list is immutable.
      * @return a list representation of this tuple

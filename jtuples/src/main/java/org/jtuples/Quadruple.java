@@ -112,6 +112,16 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
         return new Quadruple<>(fourth, third, second, first);
     }
 
+    @Override
+    public Quadruple<B, C, D, A> shiftLeft() {
+        return new Quadruple<>(second, third, fourth, first);
+    }
+
+    @Override
+    public Quadruple<D, A, B, C> shiftRight() {
+        return new Quadruple<>(fourth, first, second, third);
+    }
+
     
     @Override
     public Object[] toArray() {
