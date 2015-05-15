@@ -37,21 +37,21 @@ public class IntoPairTest {
     }
 
     @Test
-    public void testPutPair() {
+    public void testAppendPair() {
         expected = new Quadruple<>("a", "b", "c", "d");
         
-        result = extender.put(new Pair<>("c", "d"));
+        result = extender.append(new Pair<>("c", "d"));
         
         assertEquals(expected, result);
     }
 
     @Test
-    public void testPutTriple() {
+    public void testAppendTriple() {
         // TODO
     }
 
     @Test
-    public void testPutQuadruple() {
+    public void testAppendQuadruple() {
         // TODO
     }
     
