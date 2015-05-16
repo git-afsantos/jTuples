@@ -179,12 +179,12 @@ public class TripleTest {
     @Test
     public void testShiftLeft() {
         Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = triple.shiftLeft();
+                new Triple<>("1", "2", "3");
+        triple = triple.shiftLeft();
+        Triple<String, String, String> expected =
+                new Triple<>("2", "3", "1");
 
-        assertEquals(triple.second(), other.first());
-        assertEquals(triple.third(), other.second());
-        assertEquals(triple.first(), other.third());
+        assertEquals(triple, expected);
     }
 
     @Test
@@ -199,11 +199,11 @@ public class TripleTest {
     @Test
     public void testShiftRight() {
         Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = triple.shiftRight();
+                new Triple<>("1", "2", "3");
+        triple = triple.shiftRight();
+        Triple<String, String, String> expected =
+                new Triple<>("3", "1", "2");
 
-        assertEquals(triple.third(), other.first());
-        assertEquals(triple.first(), other.second());
-        assertEquals(triple.second(), other.third());
+        assertEquals(triple, expected);
     }
 }

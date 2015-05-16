@@ -194,13 +194,12 @@ public class QuadrupleTest {
     @Test
     public void testShiftLeft() {
         Quadruple<String, String, String, String> quad =
-                new Quadruple<>("hello", ",", "world", "!");
-        Quadruple<String, String, String, String> other = quad.shiftLeft();
+                new Quadruple<>("1", "2", "3", "4");
+        quad = quad.shiftLeft();
+        Quadruple<String, String, String, String> expected =
+                new Quadruple<>("2", "3", "4", "1");
 
-        assertEquals(quad.second(), other.first());
-        assertEquals(quad.third(), other.second());
-        assertEquals(quad.fourth(), other.third());
-        assertEquals(quad.first(), other.fourth());
+        assertEquals(quad, expected);
     }
 
     @Test
@@ -215,12 +214,11 @@ public class QuadrupleTest {
     @Test
     public void testShiftRight() {
         Quadruple<String, String, String, String> quad =
-                new Quadruple<>("hello", ",", "world", "!");
-        Quadruple<String, String, String, String> other = quad.shiftRight();
+                new Quadruple<>("1", "2", "3", "4");
+        quad = quad.shiftRight();
+        Quadruple<String, String, String, String> expected =
+                new Quadruple<>("4", "1", "2", "3");
 
-        assertEquals(quad.fourth(), other.first());
-        assertEquals(quad.first(), other.second());
-        assertEquals(quad.second(), other.third());
-        assertEquals(quad.third(), other.fourth());
+        assertEquals(quad, expected);
     }
 }
