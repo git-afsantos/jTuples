@@ -180,7 +180,7 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
      * @param function the function used to transform the fourth member
      * @return a quadruple with the result of function as the fourth member
      */
-    public <R> Quadruple<A, B, C, R> applyForth(Function<D, R> function) {
+    public <R> Quadruple<A, B, C, R> applyFourth(Function<D, R> function) {
         return new Quadruple<>(first, second, third, function.apply(fourth));
     }
     

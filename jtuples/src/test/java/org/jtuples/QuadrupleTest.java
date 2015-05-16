@@ -154,7 +154,7 @@ public class QuadrupleTest {
                 new Quadruple<>("a", "b", "c", "d");
 
         Quadruple<String, String, String, String> other =
-                quadruple.applyForth(s -> s + s);
+                quadruple.applyFourth(s -> s + s);
 
         assertEquals(other.fourth(), "dd");
     }
