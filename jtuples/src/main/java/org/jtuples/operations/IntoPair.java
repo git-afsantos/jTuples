@@ -48,7 +48,7 @@ public final class IntoPair<A, B> {
     /**
      * Extends this pair with the specified value.
      * @param value a value to append to this pair
-     * @return a triple that is equal to this pair appended with the
+     * @return a triple that is equal to this pair extended with the
      *         specified value
      */
     public <T> Triple<A, B, T> put(T value) {
@@ -72,9 +72,9 @@ public final class IntoPair<A, B> {
      * @return a quintuple that is equal to this pair appended with the
      *         specified triple
      */
-    public <C, D, E> Tuple append(Triple<C, D, E> triple) {
-        // TODO
-        throw new UnsupportedOperationException("Not supported yet.");
+    public <C, D, E> Quintuple<A, B, C, D, E> append(Triple<C, D, E> triple) {
+        return new Quintuple<>(getPair().first(), getPair().second(),
+                triple.first(), triple.second(), triple.third());
     }
 
     /**

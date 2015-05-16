@@ -23,6 +23,7 @@ package org.jtuples.operations;
 
 import org.jtuples.Pair;
 import org.jtuples.Quadruple;
+import org.jtuples.Quintuple;
 import org.jtuples.Triple;
 import org.jtuples.Tuple;
 import org.junit.Test;
@@ -40,30 +41,34 @@ public class IntoPairTest {
     
     @Before
     public void setup() {
-        extender = IntoPair.into(new Pair<>("a", "b"));
+        extender = IntoPair.into(new Pair<>("1", "2"));
     }
     
     @Test
     public void testPutValue() {
-        expected = new Triple<>("a", "b", "c");
+        expected = new Triple<>("1", "2", "3");
         
-        result = extender.put("c");
+        result = extender.put("3");
         
         assertEquals(expected, result);
     }
 
     @Test
     public void testAppendPair() {
-        expected = new Quadruple<>("a", "b", "c", "d");
+        expected = new Quadruple<>("1", "2", "3", "4");
         
-        result = extender.append(new Pair<>("c", "d"));
+        result = extender.append(new Pair<>("3", "4"));
         
         assertEquals(expected, result);
     }
 
     @Test
     public void testAppendTriple() {
-        // TODO
+        expected = new Quintuple<>("1", "2", "3", "4", "5");
+        
+        result = extender.append(new Triple<>("3", "4", "5"));
+        
+        assertEquals(expected, result);
     }
 
     @Test
