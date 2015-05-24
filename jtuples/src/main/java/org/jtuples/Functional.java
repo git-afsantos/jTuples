@@ -103,7 +103,7 @@ public final class Functional {
      * @return the split of the given functions
      */
     public static <A, B, C, D> BiFunction<A, B, Pair<C, D>> split(
-            BiFunction<A, B, C> f, BiFunction<A, B, D> g) {
+            BiFunction<A, B, C> f, BiFunction<? super A, ? super B, D> g) {
         return (A a, B b) -> new Pair<>(f.apply(a, b), g.apply(a, b));
     }
 
