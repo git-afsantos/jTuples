@@ -34,105 +34,101 @@ import static org.junit.Assert.*;
  *
  * @author Andre Santos <contact.andre.santos@gmail.com>
  */
-public class FunctionalTest {
+public class FunctionsTest {
     
-    public FunctionalTest() {
+    public FunctionsTest() {
     }
     
     /**
-     * Test of curry method, of class Functional.
+     * Test of curry method, of class Functions.
      */
     @Test
     public void testCurry() {
         BiFunction<String, String, String> f =
-                Functional.curry(p -> p.first() + p.second());
+                Functions.curry(p -> p.first() + p.second());
         assertEquals(f.apply("hello ", "world"), "hello world");
     }
 
     /**
-     * Test of uncurry method, of class Functional.
+     * Test of uncurry method, of class Functions.
      */
     @Test
     public void testUncurry() {
         Function<Pair<String, String>, String> f =
-                Functional.uncurry((a, b) -> a + b);
+                Functions.uncurry((a, b) -> a + b);
         assertEquals(f.apply(new Pair<>("hello ", "world")), "hello world");
     }
 
     /**
-     * Test of split method, of class Functional.
+     * Test of split method, of class Functions.
      */
     @Test
     public void testSplit_Function_Function() {
         Function<String, Pair<String, Integer>> f = 
-                Functional.split(s -> s.trim(), s -> s.length());
+                Functions.split(s -> s.trim(), s -> s.length());
         assertEquals(f.apply("  s  "), new Pair<>("s", 5));
     }
 
     /**
-     * Test of split method, of class Functional.
+     * Test of split method, of class Functions.
      */
     @Test
     public void testSplit_BiFunction_BiFunction() {
         BiFunction<Integer, Integer, Pair<Integer, Integer>> f =
-                Functional.split((a, b) -> a + b, (a, b) -> a * b);
+                Functions.split((a, b) -> a + b, (a, b) -> a * b);
         assertEquals(f.apply(2, 3), new Pair<>(5, 6));
     }
 
     /**
-     * Test of split method, of class Functional.
+     * Test of split method, of class Functions.
      */
     @Test
     public void testSplit_Supplier_Supplier() {
         Supplier<Pair<Integer, Integer>> f =
-                Functional.split(() -> 1, () -> 2);
+                Functions.split(() -> 1, () -> 2);
         assertEquals(f.get(), new Pair<>(1, 2));
     }
 
     /**
-     * Test of product method, of class Functional.
+     * Test of product method, of class Functions.
      */
     @Test
     public void testProduct_Function_Function() {
         Function<Pair<Integer, Integer>, Pair<Integer, Integer>> f =
-                Functional.product(a -> a + 1, b -> 2 * b);
+                Functions.product(a -> a + 1, b -> 2 * b);
         assertEquals(f.apply(new Pair<>(1, 2)), new Pair<>(2, 4));
     }
 
     /**
-     * Test of product method, of class Functional.
+     * Test of product method, of class Functions.
      */
     @Test
     public void testProduct_BiFunction_BiFunction() {
         BiFunction<Pair<Integer, Integer>, Pair<Integer, Integer>,
                 Pair<Integer, Integer>> f =
-                Functional.product((a, b) -> a + b, (a, b) -> a * b);
+                Functions.product((a, b) -> a + b, (a, b) -> a * b);
         assertEquals(f.apply(new Pair<>(1, 2), new Pair<>(3, 4)),
                 new Pair<>(4, 8));
     }
 
     /**
-     * Test of product method, of class Functional.
+     * Test of product method, of class Functions.
      */
     @Test
     public void testProduct_Supplier_Supplier() {
         Supplier<Pair<Integer, Integer>> f =
-                Functional.product(() -> 1, () -> 2);
+                Functions.product(() -> 1, () -> 2);
         assertEquals(f.get(), new Pair<>(1, 2));
     }
 
     /**
-     * Test of product method, of class Functional.
+     * Test of product method, of class Functions.
      */
     @Test
     public void testProduct_Consumer_Consumer() {
-        Consumer<Pair<Integer, Integer>> f = Functional.product(
-                a -> {
-                    if (!a.equals(1)) throw new IllegalArgumentException();
-                },
-                b -> {
-                    if (!b.equals(2)) throw new IllegalArgumentException();
-                });
+        Consumer<Pair<Integer, Integer>> f = Functions.product(
+                a -> { assertEquals(a.longValue(), 1); },
+                b -> { assertEquals(b.longValue(), 2); });
         f.accept(new Pair<>(1, 2));
     }
     
