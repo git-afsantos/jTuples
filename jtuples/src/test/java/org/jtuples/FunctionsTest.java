@@ -45,7 +45,7 @@ public class FunctionsTest {
     @Test
     public void testCurry() {
         BiFunction<String, String, String> f =
-                Functions.curry(p -> p.first() + p.second());
+                Functions.curry(pair -> pair.first() + pair.second());
         assertEquals(f.apply("hello ", "world"), "hello world");
     }
 
