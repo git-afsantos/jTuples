@@ -41,12 +41,12 @@ public class QuintupleTest {
 
     @Test
     public void testArity() {
-        assertEquals(quintuple.arity(), 5);
+        assertEquals(5, quintuple.arity());
     }
 
     @Test
     public void testFirst() {
-        assertEquals(quintuple.first(), "1");
+        assertEquals("1", quintuple.first());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class QuintupleTest {
 
     @Test
     public void testSecond() {
-        assertEquals(quintuple.second(), "2");
+        assertEquals("2", quintuple.second());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class QuintupleTest {
 
     @Test
     public void testThird() {
-        assertEquals(quintuple.third(), "3");
+        assertEquals("3", quintuple.third());
     }
 
     @Test
@@ -75,13 +75,23 @@ public class QuintupleTest {
     }
 
     @Test
-    public void testForth() {
-        assertEquals(quintuple.fourth(), "4");
+    public void testFourth() {
+        assertEquals("4", quintuple.fourth());
     }
 
     @Test
-    public void testForthCanBeNull() {
+    public void testFourthCanBeNull() {
         assertNull(nullQuintuple().fourth());
+    }
+    
+    @Test
+    public void testFifth() {
+        assertEquals("5", quintuple.fifth());
+    }
+
+    @Test
+    public void testFifthCanBeNull() {
+        assertNull(nullQuintuple().fifth());
     }
 
     @Test
@@ -142,7 +152,7 @@ public class QuintupleTest {
     }
 
     @Test
-    public void testApplyForth() {
+    public void testApplyFourth() {
         result = quintuple.applyFourth(s -> s + s);
 
         assertEquals(result.fourth(), "44");

@@ -21,10 +21,7 @@
  */
 package org.jtuples;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -126,12 +123,22 @@ public class SextupleTest {
     }
 
     @Test
+    public void testShiftLeftReturnsNew() {
+        assertNotEquals(sextuple, sextuple.shiftLeft());
+    }
+
+    @Test
     public void testShiftRight() {
         expected = new Sextuple<>("6", "1", "2", "3", "4", "5");
         
         result = sextuple.shiftRight();
         
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        assertNotEquals(sextuple, sextuple.shiftRight());
     }
 
     @Test
@@ -207,7 +214,7 @@ public class SextupleTest {
     }
 
     @Test
-    public void testHashCodeIsTheSameForEqualQuintuples() {
+    public void testHashCodeIsTheSameForEqualTuples() {
         Tuple other = new Sextuple<>("1", "2", "3", "4", "5", "6");
         
         assertEquals(other.hashCode(), sextuple.hashCode());
