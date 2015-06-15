@@ -134,35 +134,35 @@ public class QuintupleTest {
     public void testApplyFirst() {
         result = quintuple.applyFirst(s -> s + s);
 
-        assertEquals(result.first(), "11");
+        assertEquals("11", result.first());
     }
 
     @Test
     public void testApplySecond() {
         result = quintuple.applySecond(s -> s + s);
 
-        assertEquals(result.second(), "22");
+        assertEquals("22", result.second());
     }
 
     @Test
     public void testApplyThird() {
         result = quintuple.applyThird(s -> s + s);
 
-        assertEquals(result.third(), "33");
+        assertEquals("33", result.third());
     }
 
     @Test
     public void testApplyFourth() {
         result = quintuple.applyFourth(s -> s + s);
 
-        assertEquals(result.fourth(), "44");
+        assertEquals("44", result.fourth());
     }
 
     @Test
     public void testApplyFifth() {
         result = quintuple.applyFifth(s -> s + s);
 
-        assertEquals(result.fifth(), "55");
+        assertEquals("55", result.fifth());
     }
 
     @Test
@@ -187,7 +187,7 @@ public class QuintupleTest {
     }
 
     @Test
-    public void testHashCodeIsTheSameForEqualQuintuples() {
+    public void testHashCodeIsTheSameForEqualTuples() {
         Tuple other = new Quintuple<>("1", "2", "3", "4", "5");
         
         assertEquals(other.hashCode(), quintuple.hashCode());

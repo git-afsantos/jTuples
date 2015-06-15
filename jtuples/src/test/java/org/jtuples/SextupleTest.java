@@ -154,42 +154,42 @@ public class SextupleTest {
     public void testApplyFirst() {
         result = sextuple.applyFirst(s -> s + s);
 
-        assertEquals(result.first(), "11");
+        assertEquals("11", result.first());
     }
 
     @Test
     public void testApplySecond() {
         result = sextuple.applySecond(s -> s + s);
 
-        assertEquals(result.second(), "22");
+        assertEquals("22", result.second());
     }
 
     @Test
     public void testApplyThird() {
         result = sextuple.applyThird(s -> s + s);
 
-        assertEquals(result.third(), "33");
+        assertEquals("33", result.third());
     }
 
     @Test
     public void testApplyFourth() {
         result = sextuple.applyFourth(s -> s + s);
 
-        assertEquals(result.fourth(), "44");
+        assertEquals("44", result.fourth());
     }
 
     @Test
     public void testApplyFifth() {
         result = sextuple.applyFifth(s -> s + s);
 
-        assertEquals(result.fifth(), "55");
+        assertEquals("55", result.fifth());
     }
 
     @Test
     public void testApplySixth() {
         result = sextuple.applySixth(s -> s + s);
 
-        assertEquals(result.sixth(), "66");
+        assertEquals("66", result.sixth());
     }
 
     @Test

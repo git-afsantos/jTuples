@@ -24,148 +24,136 @@ package org.jtuples;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  */
 public class PairTest {
+    private Pair<String, String> pair;
+    private Pair<String, String> expected;
+    private Pair<String, String> result;
+    
+    @Before
+    public void setup() {
+        pair = new Pair<>("1", "2");
+    }
 
     @Test
     public void testArity() {
-        Pair<String, String> pair = new Pair<>();
-        
-        assertEquals(pair.arity(), 2);
+        assertEquals(2, pair.arity());
     }
 
     @Test
     public void testFirst() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-
-        assertEquals(pair.first(), "hello");
+        assertEquals("1", pair.first());
     }
 
     @Test
     public void testFirstCanBeNull() {
-        Pair<Object, Object> pair = new Pair<>(null, null);
-
-        assertNull(pair.first());
+        assertNull(nullPair().first());
     }
 
     @Test
     public void testSecond() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-
-        assertEquals(pair.second(), "world");
+        assertEquals("2", pair.second());
     }
 
     @Test
     public void testSecondCanBeNull() {
-        Pair<Object, Object> pair = new Pair<>(null, null);
-
-        assertNull(pair.second());
+        assertNull(nullPair().second());
     }
 
     @Test
     public void testInvert() {
-        Pair<String, Integer> pair = new Pair<>("hello", 123);
+        expected = new Pair<>("2", "1");
 
-        Pair<Integer, String> other = pair.invert();
-
-        assertEquals((int)other.first(), 123);
-        assertEquals(other.second(), "hello");
+        assertEquals(expected, pair.invert());
     }
 
     @Test
     public void testApplyFirst() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
+        result = pair.applyFirst(s -> s + s);
 
-        Pair<Integer, String> other = pair.applyFirst(s -> s.length());
-
-        assertEquals((int)other.first(), "hello".length());
+        assertEquals("11", result.first());
     }
 
     @Test
     public void testApplySecond() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
+        result = pair.applySecond(s -> s + s);
 
-        Pair<String, Integer> other = pair.applySecond(s -> s.length());
-
-        assertEquals((int)other.second(), "world".length());
+        assertEquals("22", result.second());
     }
 
     @Test
     public void testEqualsIsTrueWhenEqual() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, String> other = new Pair<>("hello", "world");
+        Tuple other = new Pair<>("1", "2");
 
         assertTrue(pair.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenNotEqual() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, String> other = new Pair<>("goodbye", "world");
+        Tuple other = new Pair<>("2", "1");
 
         assertFalse(pair.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, Integer> other = new Pair<>("hello", 123);
+        Tuple other = new Pair<>("1", 123);
 
         assertFalse(pair.equals(other));
     }
 
     @Test
-    public void testHashCodeIsTheSameForEqualPairs() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, String> other = new Pair<>("hello", "world");
+    public void testHashCodeIsTheSameForEqualTuples() {
+       Tuple other = new Pair<>("1", "2");
 
-        assertEquals(pair.hashCode(), other.hashCode());
+        assertEquals(other.hashCode(), pair.hashCode());
     }
 
     @Test
     public void testApply() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-
-        assertTrue(pair.apply((a, b) -> {
-            return "hello".equals(a) && "world".equals(b) ?
-                    Boolean.TRUE : Boolean.FALSE;
-        }));
-    }
-
-    @Test
-    public void testShiftLeftReturnsNew() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, String> other = pair.shiftLeft();
-
-        assertNotEquals(pair, other);
+        boolean result = pair.apply((a, b) -> {
+            return "1".equals(a) && "2".equals(b);
+        });
+        
+        assertTrue(result);
     }
 
     @Test
     public void testShiftLeft() {
-        Pair<String, String> pair = new Pair<>("1", "2");
-        pair = pair.shiftLeft();
-        Pair<String, String> expected = new Pair<>("2", "1");
+        expected = new Pair<>("2", "1");
 
-        assertEquals(pair, expected);
+        assertEquals(expected, pair.shiftLeft());
     }
 
     @Test
-    public void testShiftRightReturnsNew() {
-        Pair<String, String> pair = new Pair<>("hello", "world");
-        Pair<String, String> other = pair.shiftRight();
-
-        assertNotEquals(pair, other);
+    public void testShiftLeftReturnsNew() {
+        assertNotEquals(pair, pair.shiftLeft());
     }
 
     @Test
     public void testShiftRight() {
-        Pair<String, String> pair = new Pair<>("1", "2");
-        pair = pair.shiftRight();
-        Pair<String, String> expected = new Pair<>("2", "1");
+        expected = new Pair<>("2", "1");
 
-        assertEquals(pair, expected);
+        assertEquals(expected, pair.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        assertNotEquals(pair, pair.shiftRight());
+    }
+    
+    @Test
+    public void testToArray() {
+        String[] expectedArray = new String[] { "1", "2" };
+        
+        assertArrayEquals(expectedArray, pair.toArray());
+    }
+    
+    private Pair<Object, Object> nullPair() {
+        return new Pair<>();
     }
 }

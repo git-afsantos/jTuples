@@ -24,218 +24,161 @@ package org.jtuples;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
- *
- * @author Benjamim Sonntag
+ * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  */
 public class QuadrupleTest {
+    private Quadruple<String, String, String, String> quadruple;
+    private Quadruple<String, String, String, String> expected;
+    private Quadruple<String, String, String, String> result;
+    
+    @Before
+    public void setup() {
+        quadruple = new Quadruple<>("1", "2", "3", "4");
+    }
 
     @Test
     public void testArity() {
-        Quadruple<String, String, String, String> quadruple = new Quadruple<>();
-        
-        assertEquals(quadruple.arity(), 4);
+        assertEquals(4, quadruple.arity());
     }
 
     @Test
     public void testFirst() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-
-        assertEquals(quadruple.first(), "a");
+        assertEquals("1", quadruple.first());
     }
 
     @Test
     public void testFirstCanBeNull() {
-        Quadruple<Object, Object, Object, Object> quadruple =
-                new Quadruple<>(null, null, null, null);
-
-        assertNull(quadruple.first());
+        assertNull(nullQuadruple().first());
     }
 
     @Test
     public void testSecond() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-
-        assertEquals(quadruple.second(), "b");
+        assertEquals("2", quadruple.second());
     }
 
     @Test
     public void testSecondCanBeNull() {
-        Quadruple<Object, Object, Object, Object> quadruple =
-                new Quadruple<>(null, null, null, null);
-
-        assertNull(quadruple.second());
+        assertNull(nullQuadruple().second());
     }
 
     @Test
     public void testThird() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-
-        assertEquals(quadruple.third(), "c");
+        assertEquals("3", quadruple.third());
     }
 
     @Test
     public void testThirdCanBeNull() {
-        Quadruple<Object, Object, Object, Object> quadruple =
-                new Quadruple<>(null, null, null, null);
-
-        assertNull(quadruple.third());
+        assertNull(nullQuadruple().third());
     }
 
     @Test
-    public void testForth() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-
-        assertEquals(quadruple.fourth(), "d");
+    public void testFourth() {
+        assertEquals("4", quadruple.fourth());
     }
 
     @Test
-    public void testForthCanBeNull() {
-        Quadruple<Object, Object, Object, Object> quadruple =
-                new Quadruple<>(null, null, null, null);
-
-        assertNull(quadruple.fourth());
+    public void testFourthCanBeNull() {
+        assertNull(nullQuadruple().fourth());
     }
 
     @Test
     public void testInvert() {
-        Quadruple<String, String, String, Integer> quadruple =
-                new Quadruple<>("a", "b", "c", 123);
+        expected = new Quadruple<>("4", "3", "2", "1");
 
-        Quadruple<Integer, String, String, String> other = quadruple.invert();
-
-        assertEquals((int)other.first(), 123);
-        assertEquals(other.second(), "c");
-        assertEquals(other.third(), "b");
-        assertEquals(other.fourth(), "a");
+        assertEquals(expected, quadruple.invert());
     }
 
     @Test
     public void testApplyFirst() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
+        result = quadruple.applyFirst(s -> s + s);
 
-        Quadruple<String, String, String, String> other =
-                quadruple.applyFirst(s -> s + s);
-
-        assertEquals(other.first(), "aa");
+        assertEquals("11", result.first());
     }
 
     @Test
     public void testApplySecond() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
+        result = quadruple.applySecond(s -> s + s);
 
-        Quadruple<String, String, String, String> other =
-                quadruple.applySecond(s -> s + s);
-
-        assertEquals(other.second(), "bb");
+        assertEquals("22", result.second());
     }
 
     @Test
     public void testApplyThird() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
+        result = quadruple.applyThird(s -> s + s);
 
-        Quadruple<String, String, String, String> other =
-                quadruple.applyThird(s -> s + s);
-
-        assertEquals(other.third(), "cc");
+        assertEquals("33", result.third());
     }
 
     @Test
-    public void testApplyForth() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
+    public void testApplyFourth() {
+        result = quadruple.applyFourth(s -> s + s);
 
-        Quadruple<String, String, String, String> other =
-                quadruple.applyFourth(s -> s + s);
-
-        assertEquals(other.fourth(), "dd");
+        assertEquals("44", result.fourth());
     }
 
     @Test
     public void testEqualsIsTrueWhenEqual() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-        Quadruple<String, String, String, String> other =
-                new Quadruple<>("a", "b", "c", "d");
+        Tuple other = new Quadruple<>("1", "2", "3", "4");
 
         assertTrue(quadruple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenNotEqual() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-        Quadruple<String, String, String, String> other =
-                new Quadruple<>("b", "a", "c", "d");
+        Tuple other = new Quadruple<>("2", "1", "3", "4");
 
         assertFalse(quadruple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-        Quadruple<String, String, String, Integer> other =
-                new Quadruple<>("b", "a", "c", 123);
+        Tuple other = new Quadruple<>("1", "2", "3", 123);
 
         assertFalse(quadruple.equals(other));
     }
 
     @Test
-    public void testHashCodeIsTheSameForEqualPairs() {
-        Quadruple<String, String, String, String> quadruple =
-                new Quadruple<>("a", "b", "c", "d");
-        Quadruple<String, String, String, String> other =
-                new Quadruple<>("a", "b", "c", "d");
+    public void testHashCodeIsTheSameForEqualTuples() {
+        Tuple other = new Quadruple<>("1", "2", "3", "4");
 
-        assertEquals(quadruple.hashCode(), other.hashCode());
-    }
-
-    @Test
-    public void testShiftLeftReturnsNew() {
-        Quadruple<String, String, String, String> quad =
-                new Quadruple<>("hello", ",", "world", "!");
-        Quadruple<String, String, String, String> other = quad.shiftLeft();
-
-        assertNotEquals(quad, other);
+        assertEquals(other.hashCode(), quadruple.hashCode());
     }
 
     @Test
     public void testShiftLeft() {
-        Quadruple<String, String, String, String> quad =
-                new Quadruple<>("1", "2", "3", "4");
-        quad = quad.shiftLeft();
-        Quadruple<String, String, String, String> expected =
-                new Quadruple<>("2", "3", "4", "1");
+        expected = new Quadruple<>("2", "3", "4", "1");
 
-        assertEquals(quad, expected);
+        assertEquals(expected, quadruple.shiftLeft());
     }
 
     @Test
-    public void testShiftRightReturnsNew() {
-        Quadruple<String, String, String, String> quad =
-                new Quadruple<>("hello", ",", "world", "!");
-        Quadruple<String, String, String, String> other = quad.shiftRight();
-
-        assertNotEquals(quad, other);
+    public void testShiftLeftReturnsNew() {
+        assertNotEquals(quadruple, quadruple.shiftLeft());
     }
 
     @Test
     public void testShiftRight() {
-        Quadruple<String, String, String, String> quad =
-                new Quadruple<>("1", "2", "3", "4");
-        quad = quad.shiftRight();
-        Quadruple<String, String, String, String> expected =
-                new Quadruple<>("4", "1", "2", "3");
+        expected = new Quadruple<>("4", "1", "2", "3");
 
-        assertEquals(quad, expected);
+        assertEquals(expected, quadruple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        assertNotEquals(quadruple, quadruple.shiftRight());
+    }
+    
+    @Test
+    public void testToArray() {
+        String[] expectedArray = new String[] { "1", "2", "3", "4" };
+
+        assertArrayEquals(expectedArray, quadruple.toArray());
+    }
+    
+    private Quadruple<Object, Object, Object, Object> nullQuadruple() {
+        return new Quadruple<>();
     }
 }

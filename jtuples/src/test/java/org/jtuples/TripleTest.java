@@ -24,186 +24,144 @@ package org.jtuples;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  */
 public class TripleTest {
+    private Triple<String, String, String> triple;
+    private Triple<String, String, String> expected;
+    private Triple<String, String, String> result;
+    
+    @Before
+    public void setup() {
+        triple = new Triple<>("1", "2", "3");
+    }
 
     @Test
     public void testArity() {
-        Triple<String, String, String> triple = new Triple<>();
-        
-        assertEquals(triple.arity(), 3);
+        assertEquals(3, triple.arity());
     }
 
     @Test
     public void testFirst() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-
-        assertEquals(triple.first(), "hello");
+        assertEquals("1", triple.first());
     }
 
     @Test
     public void testFirstCanBeNull() {
-        Triple<Object, Object, Object> triple = new Triple<>(null, null, null);
-
-        assertNull(triple.first());
+        assertNull(nullTriple().first());
     }
 
     @Test
     public void testSecond() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-
-        assertEquals(triple.second(), "world");
+        assertEquals("2", triple.second());
     }
 
     @Test
     public void testSecondCanBeNull() {
-        Triple<Object, Object, Object> triple = new Triple<>(null, null, null);
-
-        assertNull(triple.second());
+        assertNull(nullTriple().second());
     }
 
     @Test
     public void testThird() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-
-        assertEquals(triple.third(), "!");
+        assertEquals("3", triple.third());
     }
 
     @Test
     public void testThirdCanBeNull() {
-        Triple<Object, Object, Object> triple = new Triple<>(null, null, null);
-
-        assertNull(triple.third());
+        assertNull(nullTriple().third());
     }
 
     @Test
     public void testInvert() {
-        Triple<String, Integer, Boolean> triple =
-                new Triple<>("hello", 123, true);
+        expected = new Triple<>("3", "2", "1");
 
-        Triple<Boolean, Integer, String> other = triple.invert();
-
-        assertEquals(other.first(), true);
-        assertEquals((int)other.second(), 123);
-        assertEquals(other.third(), "hello");
+        assertEquals(expected, triple.invert());
     }
 
     @Test
     public void testApplyFirst() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
+        result = triple.applyFirst(s -> s + s);
 
-        Triple<Integer, String, String> other =
-                triple.applyFirst(s -> s.length());
-
-        assertEquals((int)other.first(), "hello".length());
+        assertEquals("11", result.first());
     }
 
     @Test
     public void testApplySecond() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
+        result = triple.applySecond(s -> s + s);
 
-        Triple<String, Integer, String> other =
-                triple.applySecond(s -> s.length());
-
-        assertEquals((int)other.second(), "world".length());
+        assertEquals("22", result.second());
     }
 
     @Test
     public void testApplyThird() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
+        result = triple.applyThird(s -> s + s);
 
-        Triple<String, String, Integer> other =
-                triple.applyThird(s -> s.length());
-
-        assertEquals((int)other.third(), "!".length());
+        assertEquals("33", result.third());
     }
 
     @Test
     public void testEqualsIsTrueWhenEqual() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other =
-                new Triple<>("hello", "world", "!");
+        Tuple other = new Triple<>("1", "2", "3");
 
         assertTrue(triple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenNotEqual() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other =
-                new Triple<>("goodbye", "world", "!");
+        Tuple other = new Triple<>("2", "1", "3");
 
         assertFalse(triple.equals(other));
     }
 
     @Test
     public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, Integer> other =
-                new Triple<>("hello", "world", 123);
+        Tuple other = new Triple<>("1", "2", 123);
 
         assertFalse(triple.equals(other));
     }
 
     @Test
-    public void testHashCodeIsTheSameForEqualTriples() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other =
-                new Triple<>("hello", "world", "!");
+    public void testHashCodeIsTheSameForEqualTuples() {
+        Tuple other = new Triple<>("1", "2", "3");
 
-        assertEquals(triple.hashCode(), other.hashCode());
-    }
-
-    @Test
-    public void testShiftLeftReturnsNew() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = triple.shiftLeft();
-
-        assertNotEquals(triple, other);
+        assertEquals(other.hashCode(), triple.hashCode());
     }
 
     @Test
     public void testShiftLeft() {
-        Triple<String, String, String> triple =
-                new Triple<>("1", "2", "3");
-        triple = triple.shiftLeft();
-        Triple<String, String, String> expected =
-                new Triple<>("2", "3", "1");
+        expected = new Triple<>("2", "3", "1");
 
-        assertEquals(triple, expected);
+        assertEquals(expected, triple.shiftLeft());
     }
 
     @Test
-    public void testShiftRightReturnsNew() {
-        Triple<String, String, String> triple =
-                new Triple<>("hello", "world", "!");
-        Triple<String, String, String> other = triple.shiftRight();
-
-        assertNotEquals(triple, other);
+    public void testShiftLeftReturnsNew() {
+        assertNotEquals(triple, triple.shiftLeft());
     }
 
     @Test
     public void testShiftRight() {
-        Triple<String, String, String> triple =
-                new Triple<>("1", "2", "3");
-        triple = triple.shiftRight();
-        Triple<String, String, String> expected =
-                new Triple<>("3", "1", "2");
+        expected = new Triple<>("3", "1", "2");
 
-        assertEquals(triple, expected);
+        assertEquals(expected, triple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        assertNotEquals(triple, triple.shiftRight());
+    }
+    
+    @Test
+    public void testToArray() {
+        String[] expectedArray = new String[] { "1", "2", "3" };
+        
+        assertArrayEquals(expectedArray, triple.toArray());
+    }
+    
+    private Triple<Object, Object, Object> nullTriple() {
+        return new Triple<>();
     }
 }
