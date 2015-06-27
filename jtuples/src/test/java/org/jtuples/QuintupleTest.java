@@ -137,11 +137,6 @@ public class QuintupleTest {
     }
 
     @Test
-    public void testShiftLeftWithNullReturnsNew() {
-        assertNotEquals(quintuple, quintuple.shiftLeft(null));
-    }
-
-    @Test
     public void testShiftRight() {
         expected = new Quintuple<>("5", "1", "2", "3", "4");
         
@@ -172,11 +167,6 @@ public class QuintupleTest {
         expected = new Quintuple<>(null, "1", "2", "3", "4");
 
         assertEquals(expected, quintuple.shiftRight(null));
-    }
-
-    @Test
-    public void testShiftRightWithNullReturnsNew() {
-        assertNotEquals(quintuple, quintuple.shiftRight(null));
     }
     
     @Test

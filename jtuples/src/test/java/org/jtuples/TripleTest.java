@@ -157,11 +157,6 @@ public class TripleTest {
     }
 
     @Test
-    public void testShiftLeftWithNullReturnsNew() {
-        assertNotEquals(triple, triple.shiftLeft(null));
-    }
-
-    @Test
     public void testShiftLeftReturnsNew() {
         assertNotEquals(triple, triple.shiftLeft());
     }
@@ -195,11 +190,6 @@ public class TripleTest {
         expected = new Triple<>(null, "1", "2");
 
         assertEquals(expected, triple.shiftRight(null));
-    }
-
-    @Test
-    public void testShiftRightWithNullReturnsNew() {
-        assertNotEquals(triple, triple.shiftRight(null));
     }
     
     @Test

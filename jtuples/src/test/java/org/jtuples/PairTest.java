@@ -154,11 +154,6 @@ public class PairTest {
     }
 
     @Test
-    public void testShiftLeftWithNullReturnsNew() {
-        assertNotEquals(pair, pair.shiftLeft(null));
-    }
-
-    @Test
     public void testShiftRight() {
         expected = new Pair<>("2", "1");
 
@@ -187,11 +182,6 @@ public class PairTest {
         expected = new Pair<>(null, "1");
 
         assertEquals(expected, pair.shiftRight(null));
-    }
-
-    @Test
-    public void testShiftRightWithNullReturnsNew() {
-        assertNotEquals(pair, pair.shiftRight(null));
     }
     
     @Test

@@ -179,11 +179,6 @@ public class QuadrupleTest {
     }
 
     @Test
-    public void testShiftLeftWithNullReturnsNew() {
-        assertNotEquals(quadruple, quadruple.shiftLeft(null));
-    }
-
-    @Test
     public void testShiftRight() {
         expected = new Quadruple<>("4", "1", "2", "3");
 
@@ -212,11 +207,6 @@ public class QuadrupleTest {
         expected = new Quadruple<>(null, "1", "2", "3");
 
         assertEquals(expected, quadruple.shiftRight(null));
-    }
-
-    @Test
-    public void testShiftRightWithNullReturnsNew() {
-        assertNotEquals(quadruple, quadruple.shiftRight(null));
     }
     
     @Test

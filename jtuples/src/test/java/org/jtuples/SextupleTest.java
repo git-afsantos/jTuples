@@ -147,11 +147,6 @@ public class SextupleTest {
     }
 
     @Test
-    public void testShiftLeftWithNullReturnsNew() {
-        assertNotEquals(sextuple, sextuple.shiftLeft(null));
-    }
-
-    @Test
     public void testShiftRight() {
         expected = new Sextuple<>("6", "1", "2", "3", "4", "5");
         
@@ -182,11 +177,6 @@ public class SextupleTest {
         expected = new Sextuple<>(null, "1", "2", "3", "4", "5");
 
         assertEquals(expected, sextuple.shiftRight(null));
-    }
-
-    @Test
-    public void testShiftRightWithNullReturnsNew() {
-        assertNotEquals(sextuple, sextuple.shiftRight(null));
     }
 
     @Test
