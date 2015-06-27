@@ -48,17 +48,53 @@ public interface Tuple {
 
     /**
      * Returns a new tuple, with the members shifted to the left
-     * by one position.
-     * @return a tuple shifted to the left
+     * by one position. This operation has a wrapping behaviour,
+     * meaning that the member that would be excluded by the shift
+     * instead occupies the new open position.
+     * 
+     * For instance, calling {@code ((1, 2, 3)).shiftLeft()} would yield
+     * the tuple {@code (2, 3, 1)}.
+     * @return a tuple shifted to the left, wrapping around
      */
     Tuple shiftLeft();
 
     /**
+     * Returns a new tuple, with the members shifted to the left
+     * by one position. The given value occupies the new open position,
+     * after shifting the original members.
+     * 
+     * For instance, calling {@code ((1, 2, 3)).shiftLeft(4)} would yield
+     * the tuple {@code (2, 3, 4)}.
+     * @param <V> the type of the new member to be inserted
+     * @param value the new member to be inserted
+     * @return a tuple shifted to the left, with the new member given
+     */
+    <V> Tuple shiftLeft(V value);
+
+    /**
      * Returns a new tuple, with the members shifted to the right
-     * by one position.
-     * @return a tuple shifted to the right
+     * by one position. This operation has a wrapping behaviour,
+     * meaning that the member that would be excluded by the shift
+     * instead occupies the new open position.
+     * 
+     * For instance, calling {@code ((1, 2, 3)).shiftRight()} would yield
+     * the tuple {@code (3, 1, 2)}.
+     * @return a tuple shifted to the right, wrapping around
      */
     Tuple shiftRight();
+
+    /**
+     * Returns a new tuple, with the members shifted to the right
+     * by one position. The given value occupies the new open position,
+     * after shifting the original members.
+     * 
+     * For instance, calling {@code ((1, 2, 3)).shiftRight(0)} would yield
+     * the tuple {@code (0, 1, 2)}.
+     * @param <V> the type of the new member to be inserted
+     * @param value the new member to be inserted
+     * @return a tuple shifted to the right, with the new member given
+     */
+    <V> Tuple shiftRight(V value);
 
     /**
      * Returns a {@code List} view of the elements in this tuple.
