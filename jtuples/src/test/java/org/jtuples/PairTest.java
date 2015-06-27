@@ -115,11 +115,11 @@ public class PairTest {
 
     @Test
     public void testApply() {
-        boolean result = pair.apply((a, b) -> {
+        boolean testResult = pair.apply((a, b) -> {
             return "1".equals(a) && "2".equals(b);
         });
         
-        assertTrue(result);
+        assertTrue(testResult);
     }
 
     @Test
@@ -135,6 +135,25 @@ public class PairTest {
     }
 
     @Test
+    public void testShiftLeftWithValue() {
+        expected = new Pair<>("2", "3");
+
+        assertEquals(expected, pair.shiftLeft("3"));
+    }
+
+    @Test
+    public void testShiftLeftWithValueReturnsNew() {
+        assertNotEquals(pair, pair.shiftLeft("3"));
+    }
+
+    @Test
+    public void testShiftLeftWithNull() {
+        expected = new Pair<>("2", null);
+
+        assertEquals(expected, pair.shiftLeft(null));
+    }
+
+    @Test
     public void testShiftRight() {
         expected = new Pair<>("2", "1");
 
@@ -144,6 +163,25 @@ public class PairTest {
     @Test
     public void testShiftRightReturnsNew() {
         assertNotEquals(pair, pair.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightWithValue() {
+        expected = new Pair<>("0", "1");
+
+        assertEquals(expected, pair.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithValueReturnsNew() {
+        assertNotEquals(pair, pair.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithNull() {
+        expected = new Pair<>(null, "1");
+
+        assertEquals(expected, pair.shiftRight(null));
     }
     
     @Test

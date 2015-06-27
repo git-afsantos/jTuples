@@ -139,13 +139,23 @@ public final class Sextuple<A, B, C, D, E, F> extends AbstractTuple {
 
     @Override
     public Sextuple<B, C, D, E, F, A> shiftLeft() {
+        return shiftLeft(first());
+    }
+
+    @Override
+    public <V> Sextuple<B, C, D, E, F, V> shiftLeft(V value) {
         return new Sextuple<>(second(), third(), fourth(),
-                fifth(), sixth(), first());
+                fifth(), sixth(), value);
     }
 
     @Override
     public Sextuple<F, A, B, C, D, E> shiftRight() {
-        return new Sextuple<>(sixth(), first(), second(),
+        return shiftRight(sixth());
+    }
+
+    @Override
+    public <V> Sextuple<V, A, B, C, D, E> shiftRight(V value) {
+        return new Sextuple<>(value, first(), second(),
                 third(), fourth(), fifth());
     }
 

@@ -113,12 +113,60 @@ public class QuintupleTest {
     }
 
     @Test
+    public void testShiftLeftReturnsNew() {
+        assertNotEquals(quintuple, quintuple.shiftLeft());
+    }
+
+    @Test
+    public void testShiftLeftWithValue() {
+        expected = new Quintuple<>("2", "3", "4", "5", "6");
+
+        assertEquals(expected, quintuple.shiftLeft("6"));
+    }
+
+    @Test
+    public void testShiftLeftWithValueReturnsNew() {
+        assertNotEquals(quintuple, quintuple.shiftLeft("6"));
+    }
+
+    @Test
+    public void testShiftLeftWithNull() {
+        expected = new Quintuple<>("2", "3", "4", "5", null);
+
+        assertEquals(expected, quintuple.shiftLeft(null));
+    }
+
+    @Test
     public void testShiftRight() {
         expected = new Quintuple<>("5", "1", "2", "3", "4");
         
         result = quintuple.shiftRight();
         
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void testShiftRightReturnsNew() {
+        assertNotEquals(quintuple, quintuple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightWithValue() {
+        expected = new Quintuple<>("0", "1", "2", "3", "4");
+
+        assertEquals(expected, quintuple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithValueReturnsNew() {
+        assertNotEquals(quintuple, quintuple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithNull() {
+        expected = new Quintuple<>(null, "1", "2", "3", "4");
+
+        assertEquals(expected, quintuple.shiftRight(null));
     }
     
     @Test

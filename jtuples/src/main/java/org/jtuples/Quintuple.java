@@ -126,12 +126,22 @@ public final class Quintuple<A, B, C, D, E> extends AbstractTuple {
 
     @Override
     public Quintuple<B, C, D, E, A> shiftLeft() {
-        return new Quintuple(second(), third(), fourth(), fifth(), first());
+        return shiftLeft(first());
+    }
+
+    @Override
+    public <V> Quintuple<B, C, D, E, V> shiftLeft(V value) {
+        return new Quintuple(second(), third(), fourth(), fifth(), value);
     }
 
     @Override
     public Quintuple<E, A, B, C, D> shiftRight() {
-        return new Quintuple(fifth(), first(), second(), third(), fourth());
+        return shiftRight(fifth());
+    }
+
+    @Override
+    public <V> Quintuple<V, A, B, C, D> shiftRight(V value) {
+        return new Quintuple(value, first(), second(), third(), fourth());
     }
 
     @Override

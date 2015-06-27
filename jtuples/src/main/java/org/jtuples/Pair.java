@@ -91,12 +91,22 @@ public final class Pair<A, B> extends AbstractTuple {
 
     @Override
     public Pair<B, A> shiftLeft() {
-        return invert();
+        return shiftLeft(first);
+    }
+
+    @Override
+    public <V> Pair<B, V> shiftLeft(V value) {
+        return new Pair<>(second, value);
     }
 
     @Override
     public Pair<B, A> shiftRight() {
-        return invert();
+        return shiftRight(second);
+    }
+
+    @Override
+    public <V> Pair<V, A> shiftRight(V value) {
+        return new Pair<>(value, first);
     }
 
 

@@ -128,6 +128,25 @@ public class SextupleTest {
     }
 
     @Test
+    public void testShiftLeftWithValue() {
+        expected = new Sextuple<>("2", "3", "4", "5", "6", "7");
+
+        assertEquals(expected, sextuple.shiftLeft("7"));
+    }
+
+    @Test
+    public void testShiftLeftWithValueReturnsNew() {
+        assertNotEquals(sextuple, sextuple.shiftLeft("3"));
+    }
+
+    @Test
+    public void testShiftLeftWithNull() {
+        expected = new Sextuple<>("2", "3", "4", "5", "6", null);
+
+        assertEquals(expected, sextuple.shiftLeft(null));
+    }
+
+    @Test
     public void testShiftRight() {
         expected = new Sextuple<>("6", "1", "2", "3", "4", "5");
         
@@ -139,6 +158,25 @@ public class SextupleTest {
     @Test
     public void testShiftRightReturnsNew() {
         assertNotEquals(sextuple, sextuple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightWithValue() {
+        expected = new Sextuple<>("0", "1", "2", "3", "4", "5");
+
+        assertEquals(expected, sextuple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithValueReturnsNew() {
+        assertNotEquals(sextuple, sextuple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithNull() {
+        expected = new Sextuple<>(null, "1", "2", "3", "4", "5");
+
+        assertEquals(expected, sextuple.shiftRight(null));
     }
 
     @Test

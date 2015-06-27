@@ -160,6 +160,25 @@ public class QuadrupleTest {
     }
 
     @Test
+    public void testShiftLeftWithValue() {
+        expected = new Quadruple<>("2", "3", "4", "5");
+
+        assertEquals(expected, quadruple.shiftLeft("5"));
+    }
+
+    @Test
+    public void testShiftLeftWithValueReturnsNew() {
+        assertNotEquals(quadruple, quadruple.shiftLeft("5"));
+    }
+
+    @Test
+    public void testShiftLeftWithNull() {
+        expected = new Quadruple<>("2", "3", "4", null);
+
+        assertEquals(expected, quadruple.shiftLeft(null));
+    }
+
+    @Test
     public void testShiftRight() {
         expected = new Quadruple<>("4", "1", "2", "3");
 
@@ -169,6 +188,25 @@ public class QuadrupleTest {
     @Test
     public void testShiftRightReturnsNew() {
         assertNotEquals(quadruple, quadruple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightWithValue() {
+        expected = new Quadruple<>("0", "1", "2", "3");
+
+        assertEquals(expected, quadruple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithValueReturnsNew() {
+        assertNotEquals(quadruple, quadruple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithNull() {
+        expected = new Quadruple<>(null, "1", "2", "3");
+
+        assertEquals(expected, quadruple.shiftRight(null));
     }
     
     @Test
