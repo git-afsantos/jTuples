@@ -22,7 +22,6 @@
 package org.jtuples;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Represents a mathematical tuple.
