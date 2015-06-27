@@ -138,6 +138,30 @@ public class TripleTest {
     }
 
     @Test
+    public void testShiftLeftWithValue() {
+        expected = new Triple<>("2", "3", "4");
+
+        assertEquals(expected, triple.shiftLeft("4"));
+    }
+
+    @Test
+    public void testShiftLeftWithValueReturnsNew() {
+        assertNotEquals(triple, triple.shiftLeft("4"));
+    }
+
+    @Test
+    public void testShiftLeftWithNull() {
+        expected = new Triple<>("2", "3", null);
+
+        assertEquals(expected, triple.shiftLeft(null));
+    }
+
+    @Test
+    public void testShiftLeftWithNullReturnsNew() {
+        assertNotEquals(triple, triple.shiftLeft(null));
+    }
+
+    @Test
     public void testShiftLeftReturnsNew() {
         assertNotEquals(triple, triple.shiftLeft());
     }
@@ -152,6 +176,30 @@ public class TripleTest {
     @Test
     public void testShiftRightReturnsNew() {
         assertNotEquals(triple, triple.shiftRight());
+    }
+
+    @Test
+    public void testShiftRightWithValue() {
+        expected = new Triple<>("0", "1", "2");
+
+        assertEquals(expected, triple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithValueReturnsNew() {
+        assertNotEquals(triple, triple.shiftRight("0"));
+    }
+
+    @Test
+    public void testShiftRightWithNull() {
+        expected = new Triple<>(null, "1", "2");
+
+        assertEquals(expected, triple.shiftRight(null));
+    }
+
+    @Test
+    public void testShiftRightWithNullReturnsNew() {
+        assertNotEquals(triple, triple.shiftRight(null));
     }
     
     @Test
