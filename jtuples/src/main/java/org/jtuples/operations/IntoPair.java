@@ -38,12 +38,13 @@ public final class IntoPair<A, B> {
     public static <A, B> IntoPair<A, B> into(Pair<A, B> pair) {
         return new IntoPair<>(pair);
     }
-    
+
     private final Pair<A, B> pair;
-    
+
     private IntoPair(Pair<A, B> pair) {
         this.pair = pair;
     }
+
 
     /**
      * Extends this pair with the specified value.
@@ -83,11 +84,12 @@ public final class IntoPair<A, B> {
      * @return a sextuple that is equal to this pair appended with the
      *         specified quadruple
      */
-    public <C, D, E, F> Tuple append(Quadruple<C, D, E, F> quadruple) {
-        // TODO
-        throw new UnsupportedOperationException("Not supported yet.");
+    public <C, D, E, F> Sextuple<A, B, C, D, E, F> append(Quadruple<C, D, E, F> quadruple) {
+        return new Sextuple<>(getPair().first(), getPair().second(),
+                quadruple.first(), quadruple.second(), quadruple.third(), quadruple.fourth());
     }
-    
+
+
     private Pair<A, B> getPair() {
         return pair;
     }
