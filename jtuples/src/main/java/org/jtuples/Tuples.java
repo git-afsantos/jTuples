@@ -38,6 +38,7 @@ import java.util.function.Function;
  * <li>{@code zip}
  * </ul>
  *
+ * @author Andre Santos <contact.andre.santos@gmail.com>
  * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  * @see org.jtuples.Tuple
  */
@@ -123,6 +124,31 @@ public final class Tuples {
     public static <A, B, C, D, E, F> Sextuple<A, B, C, D, E, F> with(A first,
             B second, C third, D fourth, E fifth, F sixth) {
         return new Sextuple<>(first, second, third, fourth, fifth, sixth);
+    }
+
+    /**
+     * Creates a septuple with the given arguments.
+     * @param <A> the type of the first element of the septuple
+     * @param <B> the type of the second element of the septuple
+     * @param <C> the type of the third element of the septuple
+     * @param <D> the type of the fourth element of the septuple
+     * @param <E> the type of the fifth element of the septuple
+     * @param <F> the type of the sixth element of the septuple
+     * @param <G> the type of the seventh element of the septuple
+     * @param first the first element of the septuple
+     * @param second the second element of the septuple
+     * @param third the third element of the septuple
+     * @param fourth the fourth element of the septuple
+     * @param fifth the fifth element of the septuple
+     * @param sixth the sixth element of the septuple
+     * @param seventh the seventh element of the septuple
+     * @return a septuple with the given arguments
+     */
+    public static <A, B, C, D, E, F, G> Septuple<A, B, C, D, E, F, G> with(
+            A first, B second, C third, D fourth,
+            E fifth, F sixth, G seventh) {
+        return new Septuple<>(first, second, third, fourth,
+                fifth, sixth, seventh);
     }
 
 
@@ -373,6 +399,41 @@ public final class Tuples {
                 f.apply(sextuple.fourth()),
                 f.apply(sextuple.fifth()),
                 f.apply(sextuple.sixth())
+        );
+    }
+
+    /**
+     * Creates a septuple by applying a function to each element
+     * of the given septuple.
+     *
+     * The resulting septuple's elements will be the result of applying
+     * the function to each element of the given septuple, in order.
+     * That is, for a function {@code fn} and a septuple
+     * {@code (a, b, c, d, e, f, g)}
+     * the result is the septuple
+     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g))}.
+     *
+     * @param <A> the type of the elements of the given septuple
+     * @param <B> the type of the elements of the resulting septuple
+     * @param septuple a septuple whose elements have a common superclass
+     * @param f a function to be applied to all elements of {@code septuple}
+     * @return a septuple whose elements are the result of applying {@code f}
+     *         to all elements of the given septuple
+     * @throws NullPointerException if the given septuple is null
+     *         or if the given function is null
+     */
+    public static <A, B> Septuple<B, B, B, B, B, B, B> map(
+            Septuple<? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A, ? extends A, ? extends A> septuple,
+            Function<A, B> f) {
+        return new Septuple<>(
+                f.apply(septuple.first()),
+                f.apply(septuple.second()),
+                f.apply(septuple.third()),
+                f.apply(septuple.fourth()),
+                f.apply(septuple.fifth()),
+                f.apply(septuple.sixth()),
+                f.apply(septuple.seventh())
         );
     }
 
