@@ -198,7 +198,12 @@ public class TripleTest {
         
         assertArrayEquals(expectedArray, triple.toArray());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2, 3)", triple.toString());
+    }
+
     private Triple<Object, Object, Object> nullTriple() {
         return new Triple<>();
     }

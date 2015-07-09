@@ -257,7 +257,12 @@ public class SextupleTest {
         
         assertEquals(other.hashCode(), sextuple.hashCode());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2, 3, 4, 5, 6)", sextuple.toString());
+    }
+
     private Sextuple nullSextuple() {
         return new Sextuple();
     }

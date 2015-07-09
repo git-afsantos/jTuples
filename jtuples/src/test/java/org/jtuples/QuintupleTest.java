@@ -240,7 +240,12 @@ public class QuintupleTest {
         
         assertEquals(other.hashCode(), quintuple.hashCode());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2, 3, 4, 5)", quintuple.toString());
+    }
+
     private Quintuple<Object, Object, Object, Object, Object> nullQuintuple() {
         return new Quintuple<>(null, null, null, null, null);
     }

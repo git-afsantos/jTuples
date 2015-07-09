@@ -190,7 +190,12 @@ public class PairTest {
         
         assertArrayEquals(expectedArray, pair.toArray());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2)", pair.toString());
+    }
+
     private Pair<Object, Object> nullPair() {
         return new Pair<>();
     }
