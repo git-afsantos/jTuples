@@ -26,8 +26,9 @@ import java.util.function.Function;
 /**
  * Represents a mathematical ordered septuple of objects.
  * The order in which the objects appear in the septuple is significant:
- * the ordered septuple {@code (a, b, c, d, e, f)} is different from the ordered
- * septuple {@code (b, a, c, d, e, f)} unless {@code a} and {@code b} are equal.
+ * the ordered septuple {@code (a, b, c, d, e, f, g)} is different from the
+ * ordered septuple {@code (b, a, c, d, e, f, g)} unless
+ * {@code a} and {@code b} are equal.
  * 
  * @author Andre Santos <contact.andre.santos@gmail.com>
  * @param <A> the type of the first element of the septuple
