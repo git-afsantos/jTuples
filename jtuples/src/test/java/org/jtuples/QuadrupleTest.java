@@ -215,7 +215,12 @@ public class QuadrupleTest {
 
         assertArrayEquals(expectedArray, quadruple.toArray());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2, 3, 4)", quadruple.toString());
+    }
+
     private Quadruple<Object, Object, Object, Object> nullQuadruple() {
         return new Quadruple<>();
     }

@@ -26,48 +26,63 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 /**
  * This class provides skeletal implementations of common methods for tuples.
  *
  * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  */
 public abstract class AbstractTuple implements Tuple {
-    // Note that this implementation is not final.
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<?> asList() {
         return Collections.unmodifiableList(Arrays.asList(this.toArray()));
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final boolean equals(Object obj) {
-        if (this == obj) { return true; }
-        if (!(obj instanceof Tuple)) { return false; }
-        Tuple t = (Tuple) obj;
-        if (this.arity() != t.arity()) { return false; }
-        Object[] a1 = this.toArray();
-        Object[] a2 = t.toArray();
-        for (int i = 0; i < this.arity(); ++i) {
-            if (!Objects.equals(a1[i], a2[i])) { return false; }
+        if (this == obj) {
+            return true;
         }
-        return true;
+        else if (!(obj instanceof Tuple)) {
+            return false;
+        }
+        else {
+            return equalsTuple((Tuple) obj);
+        }
     }
 
+    private boolean equalsTuple(Tuple other) {
+        if (this.arity() != other.arity()) {
+            return false;
+        }
+        else {
+            return Arrays.equals(this.toArray(), other.toArray());
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final int hashCode() {
-        int hashCode = 1;
-        for (Object e: this.asList()) {
-            hashCode = 31 * hashCode + Objects.hashCode(e);
-        }
-        return hashCode;
+        return this.asList().hashCode();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public final String toString() {
-        StringJoiner joiner = new StringJoiner(", ", "(", ")");
-        for (Object e: this.asList()) {
-            joiner.add(String.valueOf(e));
-        }
-        return joiner.toString();
+        return this.asList().stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "(", ")"));
     }
 }

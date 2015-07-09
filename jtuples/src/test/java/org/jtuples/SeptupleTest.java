@@ -279,7 +279,12 @@ public class SeptupleTest {
         
         assertEquals(other.hashCode(), septuple.hashCode());
     }
-    
+
+    @Test
+    public void testToString() {
+        assertEquals("(1, 2, 3, 4, 5, 6, 7)", septuple.toString());
+    }
+
     private Septuple nullSeptuple() {
         return new Septuple();
     }
