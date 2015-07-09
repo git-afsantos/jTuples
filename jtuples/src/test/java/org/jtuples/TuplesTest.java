@@ -29,6 +29,7 @@ import static org.junit.Assert.*;
 
 /**
  *
+ * @author Andre Santos <contact.andre.santos@gmail.com>
  * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
  */
 public class TuplesTest {
@@ -55,6 +56,18 @@ public class TuplesTest {
     public void testQuintupleWith() {
         Tuple expected = new Quintuple<>("1", "2", "3", "4", "5");
         assertEquals(expected, Tuples.with("1", "2", "3", "4", "5"));
+    }
+
+    @Test
+    public void testSextupleWith() {
+        Tuple expected = new Sextuple<>("1", "2", "3", "4", "5", "6");
+        assertEquals(expected, Tuples.with("1", "2", "3", "4", "5", "6"));
+    }
+
+    @Test
+    public void testSeptupleWith() {
+        Tuple expected = new Septuple<>("1", "2", "3", "4", "5", "6", "7");
+        assertEquals(expected, Tuples.with("1", "2", "3", "4", "5", "6", "7"));
     }
 
     @Test
@@ -131,6 +144,23 @@ public class TuplesTest {
                 new Quintuple<>("1", "2", "3", "4", "5");
         Tuple expected = new Quintuple<>("11", "22", "33", "44", "55");
         assertEquals(expected, Tuples.map(quintuple, s -> s + s));
+    }
+
+    @Test
+    public void testMap_Sextuple() {
+        Sextuple<String, String, String, String, String, String> sextuple =
+                new Sextuple<>("1", "2", "3", "4", "5", "6");
+        Tuple expected = new Sextuple<>("11", "22", "33", "44", "55", "66");
+        assertEquals(expected, Tuples.map(sextuple, s -> s + s));
+    }
+
+    @Test
+    public void testMap_Septuple() {
+        Septuple<String, String, String, String, String, String, String>
+                septuple = new Septuple<>("1", "2", "3", "4", "5", "6", "7");
+        Tuple expected =
+                new Septuple<>("11", "22", "33", "44", "55", "66", "77");
+        assertEquals(expected, Tuples.map(septuple, s -> s + s));
     }
 
     @Test
