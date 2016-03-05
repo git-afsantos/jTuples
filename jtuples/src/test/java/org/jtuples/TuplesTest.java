@@ -71,6 +71,12 @@ public class TuplesTest {
     }
 
     @Test
+    public void testOctupleWith() {
+        Tuple expected = new Octuple<>("1", "2", "3", "4", "5", "6", "7", "8");
+        assertEquals(expected, Tuples.with("1", "2", "3", "4", "5", "6", "7", "8"));
+    }
+
+    @Test
     public void testFlatFirst() {
         Pair<Pair<String, String>, String> pair = new Pair<>(
                 new Pair<>("1", "2"),
@@ -161,6 +167,15 @@ public class TuplesTest {
         Tuple expected =
                 new Septuple<>("11", "22", "33", "44", "55", "66", "77");
         assertEquals(expected, Tuples.map(septuple, s -> s + s));
+    }
+
+    @Test
+    public void testMap_Octuple() {
+        Octuple<String, String, String, String, String, String, String, String>
+                octuple = new Octuple<>("1", "2", "3", "4", "5", "6", "7", "8");
+        Tuple expected =
+                new Octuple<>("11", "22", "33", "44", "55", "66", "77", "88");
+        assertEquals(expected, Tuples.map(octuple, s -> s + s));
     }
 
     @Test
