@@ -158,34 +158,52 @@ public final class Octuple<A, B, C, D, E, F, G, H> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Octuple<H, G, F, E, D, C, B, A> invert() {
         return new Octuple<>(eighth, seventh, sixth, fifth, fourth,
                 third, second, first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Octuple<B, C, D, E, F, G, H, A> shiftLeft() {
         return shiftLeft(first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Octuple<B, C, D, E, F, G, H, V> shiftLeft(V value) {
         return new Octuple<>(second, third, fourth,
                 fifth, sixth, seventh, eighth, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Octuple<H, A, B, C, D, E, F, G> shiftRight() {
         return shiftRight(eighth);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Octuple<V, A, B, C, D, E, F, G> shiftRight(V value) {
         return new Octuple<>(value, first, second,
                 third, fourth, fifth, sixth, seventh);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[] {
