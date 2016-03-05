@@ -107,32 +107,50 @@ public class Quadruple<A, B, C, D> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Quadruple<D, C, B, A> invert() {
         return new Quadruple<>(fourth, third, second, first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Quadruple<B, C, D, A> shiftLeft() {
         return shiftLeft(first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Quadruple<B, C, D, V> shiftLeft(V value) {
         return new Quadruple<>(second, third, fourth, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Quadruple<D, A, B, C> shiftRight() {
         return shiftRight(fourth);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Quadruple<V, A, B, C> shiftRight(V value) {
         return new Quadruple<>(value, first, second, third);
     }
 
-    
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[]{

@@ -131,34 +131,53 @@ public final class Sextuple<A, B, C, D, E, F> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Sextuple<F, E, D, C, B, A> invert() {
         return new Sextuple<>(sixth(), fifth(), fourth(),
                 third(), second(), first());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Sextuple<B, C, D, E, F, A> shiftLeft() {
         return shiftLeft(first());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Sextuple<B, C, D, E, F, V> shiftLeft(V value) {
         return new Sextuple<>(second(), third(), fourth(),
                 fifth(), sixth(), value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Sextuple<F, A, B, C, D, E> shiftRight() {
         return shiftRight(sixth());
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Sextuple<V, A, B, C, D, E> shiftRight(V value) {
         return new Sextuple<>(value, first(), second(),
                 third(), fourth(), fifth());
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[] {

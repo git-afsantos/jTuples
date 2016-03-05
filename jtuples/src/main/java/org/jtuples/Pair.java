@@ -84,32 +84,50 @@ public final class Pair<A, B> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Pair<B, A> invert() {
         return new Pair<>(second, first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Pair<B, A> shiftLeft() {
         return shiftLeft(first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Pair<B, V> shiftLeft(V value) {
         return new Pair<>(second, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Pair<B, A> shiftRight() {
         return shiftRight(second);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Pair<V, A> shiftRight(V value) {
         return new Pair<>(value, first);
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[]{

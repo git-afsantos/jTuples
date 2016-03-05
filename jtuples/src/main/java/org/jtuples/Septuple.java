@@ -146,34 +146,53 @@ public final class Septuple<A, B, C, D, E, F, G> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Septuple<G, F, E, D, C, B, A> invert() {
         return new Septuple<>(seventh, sixth, fifth, fourth,
                 third, second, first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Septuple<B, C, D, E, F, G, A> shiftLeft() {
         return shiftLeft(first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Septuple<B, C, D, E, F, G, V> shiftLeft(V value) {
         return new Septuple<>(second, third, fourth,
                 fifth, sixth, seventh, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Septuple<G, A, B, C, D, E, F> shiftRight() {
         return shiftRight(seventh);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Septuple<V, A, B, C, D, E, F> shiftRight(V value) {
         return new Septuple<>(value, first, second,
                 third, fourth, fifth, sixth);
     }
 
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[] {
