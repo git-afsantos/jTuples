@@ -2,6 +2,10 @@
 
 > Java gets a pair.
 
+[![Build][travis-badge]][travis]
+[travis]: https://travis-ci.org/git-afsantos/jTuples
+[travis-badge]: https://api.travis-ci.org/git-afsantos/jTuples.svg
+
 The **jTuples** project provides [tuple](http://en.wikipedia.org/wiki/Tuple) implementations for the Java platform.
 
 Requires JDK 8 or higher.
