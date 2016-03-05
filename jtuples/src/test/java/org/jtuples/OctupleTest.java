@@ -264,7 +264,7 @@ public class OctupleTest {
 
     @Test
     public void testApplyEighth() {
-        result = octuple.applySeventh(s -> s + s);
+        result = octuple.applyEighth(s -> s + s);
 
         assertEquals("88", result.eighth());
     }
