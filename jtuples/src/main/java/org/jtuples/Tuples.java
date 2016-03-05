@@ -207,6 +207,38 @@ public final class Tuples {
                 fifth, sixth, seventh, eighth, ninth);
     }
 
+    /**
+     * Creates a decuple with the given arguments.
+     * @param <A> the type of the first element of the decuple
+     * @param <B> the type of the second element of the decuple
+     * @param <C> the type of the third element of the decuple
+     * @param <D> the type of the fourth element of the decuple
+     * @param <E> the type of the fifth element of the decuple
+     * @param <F> the type of the sixth element of the decuple
+     * @param <G> the type of the seventh element of the decuple
+     * @param <H> the type of the eighth element of the decuple
+     * @param <I> the type of the ninth element of the decuple
+     * @param <J> the type of the tenth element of the decuple
+     * @param first the first element of the decuple
+     * @param second the second element of the decuple
+     * @param third the third element of the decuple
+     * @param fourth the fourth element of the decuple
+     * @param fifth the fifth element of the decuple
+     * @param sixth the sixth element of the decuple
+     * @param seventh the seventh element of the decuple
+     * @param eighth the eighth element of the decuple
+     * @param ninth the ninth element of the decuple
+     * @param tenth the tenth element of the decuple
+     * @return a decuple with the given arguments
+     */
+    public static <A, B, C, D, E, F, G, H, I, J>
+            Decuple<A, B, C, D, E, F, G, H, I, J> with(A first, B second,
+                    C third, D fourth, E fifth, F sixth,
+                    G seventh, H eighth, I ninth, J tenth) {
+        return new Decuple<>(first, second, third, fourth,
+                fifth, sixth, seventh, eighth, ninth, tenth);
+    }
+
 
     /**
      * Flattens a nested tuple.
@@ -501,7 +533,7 @@ public final class Tuples {
      * the function to each element of the given octuple, in order.
      * That is, for a function {@code fn} and a octuple
      * {@code (a, b, c, d, e, f, g, h)}
-     * the result is the septuple
+     * the result is the octuple
      * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h))}.
      *
      * @param <A> the type of the elements of the given octuple
@@ -536,9 +568,9 @@ public final class Tuples {
      * The resulting nonuple's elements will be the result of applying
      * the function to each element of the given nonuple, in order.
      * That is, for a function {@code fn} and a nonuple
-     * {@code (a, b, c, d, e, f, g, h)}
-     * the result is the septuple
-     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h))}.
+     * {@code (a, b, c, d, e, f, g, h, i)}
+     * the result is the nonuple
+     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h), fn(i))}.
      *
      * @param <A> the type of the elements of the given nonuple
      * @param <B> the type of the elements of the resulting nonuple
@@ -564,6 +596,45 @@ public final class Tuples {
                 f.apply(nonuple.seventh()),
                 f.apply(nonuple.eighth()),
                 f.apply(nonuple.ninth())
+        );
+    }
+
+    /**
+     * Creates a decuple by applying a function to each element
+     * of the given decuple.
+     *
+     * The resulting decuple's elements will be the result of applying
+     * the function to each element of the given decuple, in order.
+     * That is, for a function {@code fn} and a decuple
+     * {@code (a, b, c, d, e, f, g, h, i, j)}
+     * the result is the decuple
+     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h), fn(i), fn(j))}.
+     *
+     * @param <A> the type of the elements of the given decuple
+     * @param <B> the type of the elements of the resulting decuple
+     * @param decuple a decuple whose elements have a common superclass
+     * @param f a function to be applied to all elements of {@code decuple}
+     * @return a decuple whose elements are the result of applying {@code f}
+     *         to all elements of the given decuple
+     * @throws NullPointerException if the given decuple is null
+     *         or if the given function is null
+     */
+    public static <A, B> Decuple<B, B, B, B, B, B, B, B, B, B> map(
+            Decuple<? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A, ? extends A> decuple,
+            Function<A, B> f) {
+        return new Decuple<>(
+                f.apply(decuple.first()),
+                f.apply(decuple.second()),
+                f.apply(decuple.third()),
+                f.apply(decuple.fourth()),
+                f.apply(decuple.fifth()),
+                f.apply(decuple.sixth()),
+                f.apply(decuple.seventh()),
+                f.apply(decuple.eighth()),
+                f.apply(decuple.ninth()),
+                f.apply(decuple.tenth())
         );
     }
 

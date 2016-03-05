@@ -83,6 +83,12 @@ public class TuplesTest {
     }
 
     @Test
+    public void testDecupleWith() {
+        Tuple expected = new Decuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+        assertEquals(expected, Tuples.with("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
+    }
+
+    @Test
     public void testFlatFirst() {
         Pair<Pair<String, String>, String> pair = new Pair<>(
                 new Pair<>("1", "2"),
@@ -192,6 +198,16 @@ public class TuplesTest {
         Tuple expected =
                 new Nonuple<>("11", "22", "33", "44", "55", "66", "77", "88", "99");
         assertEquals(expected, Tuples.map(nonuple, s -> s + s));
+    }
+
+    @Test
+    public void testMap_Decuple() {
+        Decuple<String, String, String, String, String, String, String,
+                String, String, String> decuple = new Decuple<>("1", "2", "3",
+                        "4", "5", "6", "7", "8", "9", "10");
+        Tuple expected = new Decuple<>("11", "22", "33", "44", "55", "66",
+                "77", "88", "99", "1010");
+        assertEquals(expected, Tuples.map(decuple, s -> s + s));
     }
 
     @Test
