@@ -151,6 +151,33 @@ public final class Tuples {
                 fifth, sixth, seventh);
     }
 
+    /**
+     * Creates a octuple with the given arguments.
+     * @param <A> the type of the first element of the octuple
+     * @param <B> the type of the second element of the octuple
+     * @param <C> the type of the third element of the octuple
+     * @param <D> the type of the fourth element of the octuple
+     * @param <E> the type of the fifth element of the octuple
+     * @param <F> the type of the sixth element of the octuple
+     * @param <G> the type of the seventh element of the octuple
+     * @param <H> the type of the eighth element of the octuple
+     * @param first the first element of the octuple
+     * @param second the second element of the octuple
+     * @param third the third element of the octuple
+     * @param fourth the fourth element of the octuple
+     * @param fifth the fifth element of the octuple
+     * @param sixth the sixth element of the octuple
+     * @param seventh the seventh element of the octuple
+     * @param eighth the eighth element of the octuple
+     * @return a octuple with the given arguments
+     */
+    public static <A, B, C, D, E, F, G, H> Octuple<A, B, C, D, E, F, G, H> with(
+            A first, B second, C third, D fourth,
+            E fifth, F sixth, G seventh, H eighth) {
+        return new Octuple<>(first, second, third, fourth,
+                fifth, sixth, seventh, eighth);
+    }
+
 
     /**
      * Flattens a nested tuple.
@@ -434,6 +461,42 @@ public final class Tuples {
                 f.apply(septuple.fifth()),
                 f.apply(septuple.sixth()),
                 f.apply(septuple.seventh())
+        );
+    }
+
+    /**
+     * Creates a octuple by applying a function to each element
+     * of the given octuple.
+     *
+     * The resulting octuple's elements will be the result of applying
+     * the function to each element of the given octuple, in order.
+     * That is, for a function {@code fn} and a octuple
+     * {@code (a, b, c, d, e, f, g, h)}
+     * the result is the septuple
+     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h))}.
+     *
+     * @param <A> the type of the elements of the given octuple
+     * @param <B> the type of the elements of the resulting octuple
+     * @param octuple a octuple whose elements have a common superclass
+     * @param f a function to be applied to all elements of {@code octuple}
+     * @return a octuple whose elements are the result of applying {@code f}
+     *         to all elements of the given octuple
+     * @throws NullPointerException if the given octuple is null
+     *         or if the given function is null
+     */
+    public static <A, B> Octuple<B, B, B, B, B, B, B, B> map(
+            Octuple<? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A, ? extends A, ? extends A, ? extends A> octuple,
+            Function<A, B> f) {
+        return new Octuple<>(
+                f.apply(octuple.first()),
+                f.apply(octuple.second()),
+                f.apply(octuple.third()),
+                f.apply(octuple.fourth()),
+                f.apply(octuple.fifth()),
+                f.apply(octuple.sixth()),
+                f.apply(octuple.seventh()),
+                f.apply(octuple.eighth())
         );
     }
 
