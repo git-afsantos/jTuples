@@ -77,6 +77,12 @@ public class TuplesTest {
     }
 
     @Test
+    public void testNonupleWith() {
+        Tuple expected = new Nonuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        assertEquals(expected, Tuples.with("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+    }
+
+    @Test
     public void testFlatFirst() {
         Pair<Pair<String, String>, String> pair = new Pair<>(
                 new Pair<>("1", "2"),
@@ -176,6 +182,16 @@ public class TuplesTest {
         Tuple expected =
                 new Octuple<>("11", "22", "33", "44", "55", "66", "77", "88");
         assertEquals(expected, Tuples.map(octuple, s -> s + s));
+    }
+
+    @Test
+    public void testMap_Nonuple() {
+        Nonuple<String, String, String, String, String, String,
+                String, String, String> nonuple = new Nonuple<>("1", "2", "3",
+                        "4", "5", "6", "7", "8", "9");
+        Tuple expected =
+                new Nonuple<>("11", "22", "33", "44", "55", "66", "77", "88", "99");
+        assertEquals(expected, Tuples.map(nonuple, s -> s + s));
     }
 
     @Test
