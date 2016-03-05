@@ -95,32 +95,50 @@ public final class Triple<A, B, C> extends AbstractTuple {
         return ARITY;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Triple<C, B, A> invert() {
         return new Triple<>(third, second, first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Triple<B, C, A> shiftLeft() {
         return shiftLeft(first);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Triple<B, C, V> shiftLeft(V value) {
         return new Triple<>(second, third, value);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Triple<C, A, B> shiftRight() {
         return shiftRight(third);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <V> Triple<V, A, B> shiftRight(V value) {
         return new Triple<>(value, first, second);
     }
 
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Object[] toArray() {
         return new Object[]{
