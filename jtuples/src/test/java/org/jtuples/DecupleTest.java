@@ -149,7 +149,7 @@ public class DecupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Decuple("10", "9", "8", "7", "6", "5", "4", "3", "2", "1");
+        expected = new Decuple<>("10", "9", "8", "7", "6", "5", "4", "3", "2", "1");
 
         result = decuple.invert();
 
@@ -336,8 +336,9 @@ public class DecupleTest {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)", decuple.toString());
     }
 
-    private Decuple nullDecuple() {
-        return new Decuple();
+    private Decuple<Object, Object, Object, Object, Object,
+    		Object, Object, Object, Object, Object> nullDecuple() {
+        return new Decuple<>();
     }
 
 }

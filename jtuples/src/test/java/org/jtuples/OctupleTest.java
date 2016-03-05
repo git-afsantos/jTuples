@@ -129,7 +129,7 @@ public class OctupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Octuple("8", "7", "6", "5", "4", "3", "2", "1");
+        expected = new Octuple<>("8", "7", "6", "5", "4", "3", "2", "1");
 
         result = octuple.invert();
 
@@ -302,8 +302,9 @@ public class OctupleTest {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8)", octuple.toString());
     }
 
-    private Octuple nullOctuple() {
-        return new Octuple();
+    private Octuple<Object, Object, Object, Object,
+    		Object, Object, Object, Object> nullOctuple() {
+        return new Octuple<>();
     }
 
 }

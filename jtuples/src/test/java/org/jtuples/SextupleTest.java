@@ -106,7 +106,7 @@ public class SextupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Sextuple("6", "5", "4", "3", "2", "1");
+        expected = new Sextuple<>("6", "5", "4", "3", "2", "1");
         
         result = sextuple.invert();
 
@@ -263,8 +263,8 @@ public class SextupleTest {
         assertEquals("(1, 2, 3, 4, 5, 6)", sextuple.toString());
     }
 
-    private Sextuple nullSextuple() {
-        return new Sextuple();
+    private Sextuple<Object, Object, Object, Object, Object, Object> nullSextuple() {
+        return new Sextuple<>();
     }
     
 }

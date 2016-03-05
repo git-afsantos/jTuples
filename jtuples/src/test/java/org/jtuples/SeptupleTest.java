@@ -119,7 +119,7 @@ public class SeptupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Septuple("7", "6", "5", "4", "3", "2", "1");
+        expected = new Septuple<>("7", "6", "5", "4", "3", "2", "1");
         
         result = septuple.invert();
 
@@ -285,8 +285,9 @@ public class SeptupleTest {
         assertEquals("(1, 2, 3, 4, 5, 6, 7)", septuple.toString());
     }
 
-    private Septuple nullSeptuple() {
-        return new Septuple();
+    private Septuple<Object, Object, Object, Object,
+    		Object, Object, Object> nullSeptuple() {
+        return new Septuple<>();
     }
     
 }

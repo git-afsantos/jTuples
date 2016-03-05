@@ -139,7 +139,7 @@ public class NonupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Nonuple("9", "8", "7", "6", "5", "4", "3", "2", "1");
+        expected = new Nonuple<>("9", "8", "7", "6", "5", "4", "3", "2", "1");
 
         result = nonuple.invert();
 
@@ -319,8 +319,9 @@ public class NonupleTest {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8, 9)", nonuple.toString());
     }
 
-    private Nonuple nullNonuple() {
-        return new Nonuple();
+    private Nonuple<Object, Object, Object, Object,
+    		Object, Object, Object, Object, Object> nullNonuple() {
+        return new Nonuple<>();
     }
 
 }
