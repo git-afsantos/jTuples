@@ -178,6 +178,35 @@ public final class Tuples {
                 fifth, sixth, seventh, eighth);
     }
 
+    /**
+     * Creates a nonuple with the given arguments.
+     * @param <A> the type of the first element of the nonuple
+     * @param <B> the type of the second element of the nonuple
+     * @param <C> the type of the third element of the nonuple
+     * @param <D> the type of the fourth element of the nonuple
+     * @param <E> the type of the fifth element of the nonuple
+     * @param <F> the type of the sixth element of the nonuple
+     * @param <G> the type of the seventh element of the nonuple
+     * @param <H> the type of the eighth element of the nonuple
+     * @param <I> the type of the ninth element of the nonuple
+     * @param first the first element of the nonuple
+     * @param second the second element of the nonuple
+     * @param third the third element of the nonuple
+     * @param fourth the fourth element of the nonuple
+     * @param fifth the fifth element of the nonuple
+     * @param sixth the sixth element of the nonuple
+     * @param seventh the seventh element of the nonuple
+     * @param eighth the eighth element of the nonuple
+     * @param ninth the ninth element of the nonuple
+     * @return a nonuple with the given arguments
+     */
+    public static <A, B, C, D, E, F, G, H, I> Nonuple<A, B, C, D, E, F, G, H, I>
+        with(A first, B second, C third, D fourth,
+            E fifth, F sixth, G seventh, H eighth, I ninth) {
+        return new Nonuple<>(first, second, third, fourth,
+                fifth, sixth, seventh, eighth, ninth);
+    }
+
 
     /**
      * Flattens a nested tuple.
@@ -497,6 +526,44 @@ public final class Tuples {
                 f.apply(octuple.sixth()),
                 f.apply(octuple.seventh()),
                 f.apply(octuple.eighth())
+        );
+    }
+
+    /**
+     * Creates a nonuple by applying a function to each element
+     * of the given nonuple.
+     *
+     * The resulting nonuple's elements will be the result of applying
+     * the function to each element of the given nonuple, in order.
+     * That is, for a function {@code fn} and a nonuple
+     * {@code (a, b, c, d, e, f, g, h)}
+     * the result is the septuple
+     * {@code (fn(a), fn(b), fn(c), fn(d), fn(e), fn(f), fn(g), fn(h))}.
+     *
+     * @param <A> the type of the elements of the given nonuple
+     * @param <B> the type of the elements of the resulting nonuple
+     * @param nonuple a nonuple whose elements have a common superclass
+     * @param f a function to be applied to all elements of {@code nonuple}
+     * @return a nonuple whose elements are the result of applying {@code f}
+     *         to all elements of the given nonuple
+     * @throws NullPointerException if the given nonuple is null
+     *         or if the given function is null
+     */
+    public static <A, B> Nonuple<B, B, B, B, B, B, B, B, B> map(
+            Nonuple<? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A, ? extends A, ? extends A, ? extends A,
+                    ? extends A> nonuple,
+            Function<A, B> f) {
+        return new Nonuple<>(
+                f.apply(nonuple.first()),
+                f.apply(nonuple.second()),
+                f.apply(nonuple.third()),
+                f.apply(nonuple.fourth()),
+                f.apply(nonuple.fifth()),
+                f.apply(nonuple.sixth()),
+                f.apply(nonuple.seventh()),
+                f.apply(nonuple.eighth()),
+                f.apply(nonuple.ninth())
         );
     }
 
