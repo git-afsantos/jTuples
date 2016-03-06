@@ -38,8 +38,8 @@ import java.util.function.Function;
  * <li>{@code zip}
  * </ul>
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Andre Santos
+ * @author Benjamim Sonntag
  * @see org.jtuples.Tuple
  */
 public final class Tuples {

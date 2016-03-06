@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  */
 public class QuintupleTest {
     private Quintuple<String, String, String, String, String> quintuple;
