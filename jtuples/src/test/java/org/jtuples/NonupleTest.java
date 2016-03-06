@@ -139,7 +139,7 @@ public class NonupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Nonuple("9", "8", "7", "6", "5", "4", "3", "2", "1");
+        expected = new Nonuple<>("9", "8", "7", "6", "5", "4", "3", "2", "1");
 
         result = nonuple.invert();
 
@@ -287,40 +287,13 @@ public class NonupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Nonuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9");
-
-        assertTrue(nonuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Nonuple<>("2", "1", "3", "4", "5", "6", "7", "8", "9");
-
-        assertFalse(nonuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Nonuple<>("1", "2", "3", "4", "5", "6", "7", "8", 123);
-
-        assertFalse(nonuple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Nonuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9");
-
-        assertEquals(other.hashCode(), nonuple.hashCode());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8, 9)", nonuple.toString());
     }
 
-    private Nonuple nullNonuple() {
-        return new Nonuple();
+    private Nonuple<Object, Object, Object, Object,
+    		Object, Object, Object, Object, Object> nullNonuple() {
+        return new Nonuple<>();
     }
 
 }

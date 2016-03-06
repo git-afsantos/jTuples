@@ -96,7 +96,7 @@ public class QuintupleTest {
 
     @Test
     public void testInvert() {
-        expected = new Quintuple("5", "4", "3", "2", "1");
+        expected = new Quintuple<>("5", "4", "3", "2", "1");
         
         result = quintuple.invert();
 
@@ -247,7 +247,7 @@ public class QuintupleTest {
     }
 
     private Quintuple<Object, Object, Object, Object, Object> nullQuintuple() {
-        return new Quintuple<>(null, null, null, null, null);
+        return new Quintuple<>();
     }
     
 }
