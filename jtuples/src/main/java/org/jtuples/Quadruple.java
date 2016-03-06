@@ -29,7 +29,7 @@ import java.util.function.Function;
  * the ordered quadruple {@code (a, b, c, d)} is different from the ordered
  * quadruple {@code (b, a, c, d)} unless {@code a} and {@code b} are equal.
  * 
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  * @param <A> the type of the first element of the quadruple
  * @param <B> the type of the second element of the quadruple
  * @param <C> the type of the third element of the quadruple

@@ -30,7 +30,7 @@ import java.util.function.Function;
  * the ordered pair {@code (a, b)} is different from the ordered pair
  * {@code (b, a)} unless {@code a} and {@code b} are equal.
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  * @param <A> the type of the first element of the pair
  * @param <B> the type of the second element of the pair
  */

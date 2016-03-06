@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  */
 public class SextupleTest {
     private Sextuple<String, String, String, String, String, String> sextuple;

@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 /**
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  */
 public class QuadrupleTest {
     private Quadruple<String, String, String, String> quadruple;

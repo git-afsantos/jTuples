@@ -30,7 +30,7 @@ import java.util.function.Supplier;
  * This class provides static methods to support a functional programming style.
  * It provides methods commonly seen in functional programming environments,
  * that revolve around the use of tuples and functions (or lambdas).
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  */
 public final class Functions {
     private Functions() {

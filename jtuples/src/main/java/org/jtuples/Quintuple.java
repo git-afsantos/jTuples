@@ -29,7 +29,7 @@ import java.util.function.Function;
  * the ordered quintuple {@code (a, b, c, d, e)} is different from the ordered
  * quintuple {@code (b, a, c, d, e)} unless {@code a} and {@code b} are equal.
  * 
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  * @param <A> the type of the first element of the quintuple
  * @param <B> the type of the second element of the quintuple
  * @param <C> the type of the third element of the quintuple

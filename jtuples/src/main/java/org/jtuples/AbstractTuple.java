@@ -31,8 +31,8 @@ import java.util.stream.Collectors;
 /**
  * This class provides skeletal implementations of common methods for tuples.
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Andre Santos
+ * @author Benjamim Sonntag
  */
 public abstract class AbstractTuple implements Tuple {
     /**

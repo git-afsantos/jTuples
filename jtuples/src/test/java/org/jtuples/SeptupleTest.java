@@ -27,7 +27,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  */
 public class SeptupleTest {
     private Septuple<String, String, String, String,

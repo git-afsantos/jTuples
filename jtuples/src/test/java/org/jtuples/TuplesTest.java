@@ -29,8 +29,8 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Andre Santos
+ * @author Benjamim Sonntag
  */
 public class TuplesTest {
 

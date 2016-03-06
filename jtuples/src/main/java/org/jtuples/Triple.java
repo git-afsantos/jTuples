@@ -29,7 +29,7 @@ import java.util.function.Function;
  * the ordered triple {@code (a, b, c)} is different from the ordered triple
  * {@code (b, a, c)} unless {@code a} and {@code b} are equal.
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  * @param <A> the type of the first element of the triple
  * @param <B> the type of the second element of the triple
  * @param <C> the type of the third element of the triple

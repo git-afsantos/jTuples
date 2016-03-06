@@ -30,7 +30,7 @@ import java.util.function.Function;
  * ordered nonuple {@code (b, a, c, d, e, f, g, h, i)} unless
  * {@code a} and {@code b} are equal.
  * 
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  * @param <A> the type of the first element of the nonuple
  * @param <B> the type of the second element of the nonuple
  * @param <C> the type of the third element of the nonuple

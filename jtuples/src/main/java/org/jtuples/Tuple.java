@@ -29,7 +29,7 @@ import java.util.List;
  * The number and type of its members are determined by the implementing
  * classes.
  *
- * @author Andre Santos <contact.andre.santos@gmail.com>
+ * @author Andre Santos
  */
 public interface Tuple {
     /**

@@ -29,7 +29,7 @@ import java.util.function.Function;
  * the ordered sextuple {@code (a, b, c, d, e, f)} is different from the ordered
  * sextuple {@code (b, a, c, d, e, f)} unless {@code a} and {@code b} are equal.
  * 
- * @author Benjamim Sonntag <benjamimsonntag@gmail.com>
+ * @author Benjamim Sonntag
  * @param <A> the type of the first element of the sextuple
  * @param <B> the type of the second element of the sextuple
  * @param <C> the type of the third element of the sextuple
