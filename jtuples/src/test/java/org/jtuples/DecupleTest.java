@@ -304,34 +304,6 @@ public class DecupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Decuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-
-        assertTrue(decuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Decuple<>("2", "1", "3", "4", "5", "6", "7", "8", "9", "10");
-
-        assertFalse(decuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Decuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9", 123);
-
-        assertFalse(decuple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Decuple<>("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-
-        assertEquals(other.hashCode(), decuple.hashCode());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)", decuple.toString());
     }

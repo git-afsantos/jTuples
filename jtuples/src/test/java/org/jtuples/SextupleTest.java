@@ -231,34 +231,6 @@ public class SextupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Sextuple<>("1", "2", "3", "4", "5", "6");
-        
-        assertTrue(sextuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Sextuple<>("2", "1", "3", "4", "5", "6");
-        
-        assertFalse(sextuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Sextuple<>("1", "2", "3", "4", "5", 123);
-        
-        assertFalse(sextuple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Sextuple<>("1", "2", "3", "4", "5", "6");
-        
-        assertEquals(other.hashCode(), sextuple.hashCode());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("(1, 2, 3, 4, 5, 6)", sextuple.toString());
     }

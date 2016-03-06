@@ -103,34 +103,6 @@ public class TripleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Triple<>("1", "2", "3");
-
-        assertTrue(triple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Triple<>("2", "1", "3");
-
-        assertFalse(triple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Triple<>("1", "2", 123);
-
-        assertFalse(triple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Triple<>("1", "2", "3");
-
-        assertEquals(other.hashCode(), triple.hashCode());
-    }
-
-    @Test
     public void testShiftLeft() {
         expected = new Triple<>("2", "3", "1");
 

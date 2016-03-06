@@ -253,34 +253,6 @@ public class SeptupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Septuple<>("1", "2", "3", "4", "5", "6", "7");
-        
-        assertTrue(septuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Septuple<>("2", "1", "3", "4", "5", "6", "7");
-        
-        assertFalse(septuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Septuple<>("1", "2", "3", "4", "5", "6", 123);
-        
-        assertFalse(septuple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Septuple<>("1", "2", "3", "4", "5", "6", "7");
-        
-        assertEquals(other.hashCode(), septuple.hashCode());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("(1, 2, 3, 4, 5, 6, 7)", septuple.toString());
     }

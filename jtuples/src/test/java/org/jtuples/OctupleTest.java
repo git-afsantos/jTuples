@@ -270,34 +270,6 @@ public class OctupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Octuple<>("1", "2", "3", "4", "5", "6", "7", "8");
-
-        assertTrue(octuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Octuple<>("2", "1", "3", "4", "5", "6", "7", "8");
-
-        assertFalse(octuple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Octuple<>("1", "2", "3", "4", "5", "6", "7", 123);
-
-        assertFalse(octuple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Octuple<>("1", "2", "3", "4", "5", "6", "7", "8");
-
-        assertEquals(other.hashCode(), octuple.hashCode());
-    }
-
-    @Test
     public void testToString() {
         assertEquals("(1, 2, 3, 4, 5, 6, 7, 8)", octuple.toString());
     }

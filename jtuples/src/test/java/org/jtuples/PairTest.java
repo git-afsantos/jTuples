@@ -86,34 +86,6 @@ public class PairTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Pair<>("1", "2");
-
-        assertTrue(pair.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Pair<>("2", "1");
-
-        assertFalse(pair.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Pair<>("1", 123);
-
-        assertFalse(pair.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-       Tuple other = new Pair<>("1", "2");
-
-        assertEquals(other.hashCode(), pair.hashCode());
-    }
-
-    @Test
     public void testApply() {
         boolean testResult = pair.apply((a, b) -> {
             return "1".equals(a) && "2".equals(b);

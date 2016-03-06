@@ -247,7 +247,7 @@ public class QuintupleTest {
     }
 
     private Quintuple<Object, Object, Object, Object, Object> nullQuintuple() {
-        return new Quintuple<>(null, null, null, null, null);
+        return new Quintuple<>();
     }
     
 }

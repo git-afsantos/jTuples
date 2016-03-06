@@ -120,34 +120,6 @@ public class QuadrupleTest {
     }
 
     @Test
-    public void testEqualsIsTrueWhenEqual() {
-        Tuple other = new Quadruple<>("1", "2", "3", "4");
-
-        assertTrue(quadruple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenNotEqual() {
-        Tuple other = new Quadruple<>("2", "1", "3", "4");
-
-        assertFalse(quadruple.equals(other));
-    }
-
-    @Test
-    public void testEqualsIsFalseWhenTypesAreDifferent() {
-        Tuple other = new Quadruple<>("1", "2", "3", 123);
-
-        assertFalse(quadruple.equals(other));
-    }
-
-    @Test
-    public void testHashCodeIsTheSameForEqualTuples() {
-        Tuple other = new Quadruple<>("1", "2", "3", "4");
-
-        assertEquals(other.hashCode(), quadruple.hashCode());
-    }
-
-    @Test
     public void testShiftLeft() {
         expected = new Quadruple<>("2", "3", "4", "1");
 
