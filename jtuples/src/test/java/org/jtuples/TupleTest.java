@@ -34,7 +34,7 @@ public class TupleTest {
     public void testEqualsIsTrueWhenSame() {
         Tuple tuple = new Pair<>("1", "2");
 
-        assertTrue(tuple.equals(pair));
+        assertTrue(tuple.equals(tuple));
     }
 
     @Test
