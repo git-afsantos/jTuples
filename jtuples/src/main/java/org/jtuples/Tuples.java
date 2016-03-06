@@ -322,12 +322,12 @@ public final class Tuples {
     /**
      * Associates a nested tuple on the second position.
      *
-     * This takes a pair with a nesting in the second member
+     * This takes a pair with a nesting in the first member
      * and returns a tuple that contains all the previous elements
-     * in the same order, but with the nesting in the first position.
+     * in the same order, but with the nesting in the second position.
      *
-     * For example, for a pair {@code (a, (b, c))} the result
-     * is the pair {@code ((a, b), c)}.
+     * For example, for a pair {@code ((a, b), c)} the result
+     * is the pair {@code (a, (b, c))}.
      *
      * @param <A> the type of the first element of the inner pair
      * @param <B> the type of the second element of the inner pair
