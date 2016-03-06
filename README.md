@@ -2,9 +2,8 @@
 
 > Java gets a pair.
 
-[![Build][travis-badge]][travis]
-[travis]: https://travis-ci.org/git-afsantos/jTuples
-[travis-badge]: https://api.travis-ci.org/git-afsantos/jTuples.svg
+[![Build](https://api.travis-ci.org/git-afsantos/jTuples.svg)](https://travis-ci.org/git-afsantos/jTuples)
+[![Coverage Status](https://coveralls.io/repos/github/git-afsantos/jTuples/badge.svg?branch=master)](https://coveralls.io/github/git-afsantos/jTuples?branch=master)
 
 The **jTuples** project provides [tuple](http://en.wikipedia.org/wiki/Tuple) implementations for the Java platform.
 
