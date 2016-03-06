@@ -103,7 +103,7 @@ public interface Tuple {
     List<?> asList();
 
     /**
-     * Returns an array containing the elements in this tuple.
+     * Returns an array containing the elements in this tuple, in the same order.
      * @return an array containing the elements in this tuple
      */
     Object[] toArray();
