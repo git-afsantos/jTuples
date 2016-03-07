@@ -21,6 +21,8 @@
  */
 package org.jtuples;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -129,5 +131,22 @@ public class FunctionsTest {
                 b -> { assertEquals(b.longValue(), 2); });
         f.accept(new Pair<>(1, 2));
     }
-    
+
+    @Test
+    public void testNonInstantiable() throws InstantiationException,
+            IllegalAccessException, IllegalArgumentException {
+        Constructor<?>[] ctors = Functions.class.getDeclaredConstructors();
+        assertEquals("Utility class should only have one constructor",
+                1, ctors.length);
+        Constructor<?> ctor = ctors[0];
+        assertFalse("Utility class constructor should be inaccessible",
+                ctor.isAccessible());
+        ctor.setAccessible(true);
+        try {
+            Object o = ctor.newInstance();
+            fail("Utility class should not be instantiable");
+        } catch (InvocationTargetException e) {
+            assertTrue(e.getCause() instanceof AssertionError);
+        }
+    }
 }

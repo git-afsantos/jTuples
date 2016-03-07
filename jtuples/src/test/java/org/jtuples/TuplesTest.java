@@ -21,6 +21,8 @@
  */
 package org.jtuples;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -243,5 +245,22 @@ public class TuplesTest {
         }
         assertEquals(expected.hasNext(), iterator.hasNext());
     }
-    
+
+    @Test
+    public void testNonInstantiable() throws InstantiationException,
+            IllegalAccessException, IllegalArgumentException {
+        Constructor<?>[] ctors = Tuples.class.getDeclaredConstructors();
+        assertEquals("Utility class should only have one constructor",
+                1, ctors.length);
+        Constructor<?> ctor = ctors[0];
+        assertFalse("Utility class constructor should be inaccessible",
+                ctor.isAccessible());
+        ctor.setAccessible(true);
+        try {
+            Object o = ctor.newInstance();
+            fail("Utility class should not be instantiable");
+        } catch (InvocationTargetException e) {
+            assertTrue(e.getCause() instanceof AssertionError);
+        }
+    }
 }
