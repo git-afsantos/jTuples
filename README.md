@@ -52,3 +52,6 @@ Pair<String, String> other = pair.applySecond(s -> s.toUpperCase());
 // => ("hello", "WORLD")
 ```
 
+## Documentation
+
+The javadocs can be seen [here](http://git-afsantos.github.io/jTuples/).
