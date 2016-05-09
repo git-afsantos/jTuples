@@ -15,6 +15,7 @@ addons:
         project:
             name: "git-afsantos/jTuples"
             description: "Java gets a pair."
+        notification_email: example@example.com
         build_command_prepend: "mvn clean"
         build_command:   "mvn -DskipTests=true compile"
         branch_pattern: master
