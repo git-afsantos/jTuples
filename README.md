@@ -4,6 +4,7 @@
 
 [![Build](https://api.travis-ci.org/git-afsantos/jTuples.svg)](https://travis-ci.org/git-afsantos/jTuples)
 [![Coverage Status](https://coveralls.io/repos/github/git-afsantos/jTuples/badge.svg?branch=master)](https://coveralls.io/github/git-afsantos/jTuples?branch=master)
+[![Coverity](https://scan.coverity.com/projects/8822/badge.svg)](https://scan.coverity.com/projects/git-afsantos-jtuples)
 
 The **jTuples** project provides [tuple](http://en.wikipedia.org/wiki/Tuple) implementations for the Java platform.
 
