@@ -7,3 +7,14 @@ notifications:
     email:
         on_success: never
         on_failure: never
+env:
+    global:
+        - secure: "ya+RGy1e39FB8Ob/aFOt/hjvmw9cpSAcgKFA9lfOnQu27Jko0FemOIQv3BiwQb+NUoNnygcb0OlC1n4PNXau87jkTJZxqzZdaYWhXGVwI0vAAhs1r2/QjjXwwMx/QHo3rRjd7RdCJ1oqJn+GnnGNq4AUtO41PnAxs21dcz7m5Roe1LgmDzneS1saOdBLNLJUbf3YdpQ5m55zX3d76mEcDaI+nB2Kx3ELIuGPmx3/gMNuf3REWLplfSn+pivnS0MPjPBel9Y9Q180VQ0w5Xf1Y1gs8dBF1LaVimgOd6HwLGRrIe3FGCTx/VBHah27WZiF6ysOylvmaGLTZkQFFPQr1gHIjZw8IcHmcrqBJi2+OUqnPeSlpIqmqL2460cPaKXZQXkLjlVOZX5fgaeogBtLRk4rKCe9UKHyaR5r7KcW1xm3sr7LSnOoxWpmJmJfl0N0VWzz4p1vzBlxiYe9pvAKKLlGi/O8A5YdHZBD8rlquLMPSdVlT29P3lDpecfA2jO2STAxjB8wmJbkaIOTlkXeaIswJNAXqt1XjfRAZuXQYhSVG+Si81IAV8suqZl2R2nd7sg4gHak60YnjN20MMxa/uej9u7b2os5EVFY6caQ4FMZ93KUb063g/w3Avvrl/335hcb/tJD4Gb/PdPrsR/jlvZuSM8wWrX1jE1dzZ3BixM="
+addons:
+    coverity_scan:
+        project:
+            name: "git-afsantos/jTuples"
+            description: "Java gets a pair."
+        build_command_prepend: "mvn clean"
+        build_command:   "mvn -DskipTests=true compile"
+        branch_pattern: master
